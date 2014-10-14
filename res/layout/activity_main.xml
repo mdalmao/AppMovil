@@ -23,20 +23,23 @@
             android:layout_height="wrap_content" >
 
             <ImageButton
-                android:id="@+id/imageButton1"
+                android:id="@+id/botonnuevo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
+                android:onClick="nuevo"
                 android:src="@android:drawable/stat_notify_more" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/botoninfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                 android:onClick="info"
                 android:src="@android:drawable/ic_dialog_info" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/botonbuscar"
+                android:onClick="buscar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/ic_menu_search" />
@@ -44,7 +47,7 @@
         </TableRow>
     </TableLayout>
     <ListView
-        android:id="@+id/TaskList"
+        android:id="@+id/TemasList"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="#ff00a2b2" />

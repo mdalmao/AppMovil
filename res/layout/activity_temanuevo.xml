@@ -1,0 +1,99 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Titulo" />
+
+    <EditText
+        android:id="@+id/tema_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/txtIntegrantes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Usuario" />
+
+    <EditText
+        android:id="@+id/tena_usuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Pregunta" />
+
+    <EditText
+        android:id="@+id/tema_respuesta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:lines="5" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Email" />
+
+    <EditText
+        android:id="@+id/tema_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+       <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            
+            <ImageButton
+            android:id="@+id/botonGuardar"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="47dp"
+            android:layout_height="42dp"
+             android:onClick="guardar"
+            android:src="@drawable/guardar" />
+            
+            <ImageButton
+                android:id="@+id/botonVolver"
+                android:layout_width="38dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="100dp"
+                 android:onClick="volver"
+                android:src="@drawable/volver" />
+
+        </TableRow>
+
+       
+       
+    </TableLayout>
+
+</LinearLayout>

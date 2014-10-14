@@ -22,6 +22,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.stackoverflow.Temanuevo"
+            android:label="@string/title_activity_temanuevo" >
+        </activity>
+        <activity
+            android:name="com.example.stackoverflow.TemaBuscar"
+            android:label="@string/title_activity_tema_buscar" >
+        </activity>
+        <activity
+            android:name="com.example.stackoverflow.TemaInfo"
+            android:label="@string/title_activity_tema_info" >
+        </activity>
+        <activity
+            android:name="com.example.stackoverflow.TemaRespuesta"
+            android:label="@string/title_activity_tema_respuesta" >
+        </activity>
     </application>
 
 </manifest>
