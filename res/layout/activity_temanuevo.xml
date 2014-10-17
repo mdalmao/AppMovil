@@ -28,7 +28,7 @@
         android:text="Usuario" />
 
     <EditText
-        android:id="@+id/tena_usuario"
+        android:id="@+id/tema_usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10" />
@@ -42,7 +42,7 @@
         android:text="Pregunta" />
 
     <EditText
-        android:id="@+id/tema_respuesta"
+        android:id="@+id/tema_pregunta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"

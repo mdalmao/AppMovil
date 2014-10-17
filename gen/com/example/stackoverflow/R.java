@@ -230,7 +230,7 @@ containing a value of this type.
     }
     public static final class id {
         public static final int TemasList=0x7f040017;
-        public static final int action_settings=0x7f040023;
+        public static final int action_settings=0x7f040026;
         public static final int alignBounds=0x7f040002;
         public static final int alignMargins=0x7f040003;
         public static final int botonGuardar=0x7f040020;
@@ -256,14 +256,17 @@ containing a value of this type.
         public static final int tableRow3=0x7f04001f;
         public static final int tema_Titulo=0x7f040019;
         public static final int tema_email=0x7f04001e;
+        public static final int tema_pregunta=0x7f040024;
         public static final int tema_respuesta=0x7f04001c;
         public static final int tema_titulo=0x7f040022;
+        public static final int tema_usuario=0x7f040023;
         public static final int tena_usuario=0x7f04001a;
         public static final int textView1=0x7f040012;
         public static final int textView3=0x7f04001b;
         public static final int textView4=0x7f04001d;
         public static final int top=0x7f040004;
         public static final int txtIntegrantes=0x7f040018;
+        public static final int txtTtitulo=0x7f040025;
         public static final int vertical=0x7f040001;
     }
     public static final class layout {
@@ -272,6 +275,7 @@ containing a value of this type.
         public static final int activity_tema_info=0x7f030002;
         public static final int activity_tema_respuesta=0x7f030003;
         public static final int activity_temanuevo=0x7f030004;
+        public static final int temas_row2=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -279,6 +283,7 @@ containing a value of this type.
         public static final int tema_info=0x7f080002;
         public static final int tema_respuesta=0x7f080003;
         public static final int temanuevo=0x7f080004;
+        public static final int temas_row=0x7f080005;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
@@ -288,6 +293,8 @@ containing a value of this type.
         public static final int title_activity_tema_info=0x7f060005;
         public static final int title_activity_tema_respuesta=0x7f060006;
         public static final int title_activity_temanuevo=0x7f060003;
+        public static final int title_activity_temas_row=0x7f060008;
+        public static final int titulo=0x7f060007;
     }
     public static final class style {
         /** 

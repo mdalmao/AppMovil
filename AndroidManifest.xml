@@ -38,6 +38,7 @@
             android:name="com.example.stackoverflow.TemaRespuesta"
             android:label="@string/title_activity_tema_respuesta" >
         </activity>
+      
     </application>
 
 </manifest>

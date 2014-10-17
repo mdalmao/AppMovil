@@ -4,13 +4,22 @@ package com.example.stackoverflow;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import modelo.DBHelper;
+import modelo.DatabaseManager;
+import modelo.Temas;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class MainActivity extends Activity {
 
@@ -19,13 +28,28 @@ public class MainActivity extends Activity {
 	ImageButton botonnuevo;
 	ImageButton botoninfo;
 	
+	List yourData = new ArrayList();
+	private ListView listview;
+	private List<Temas> listTemas = new ArrayList<Temas>();
+   
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	    temasListView =(ListView) findViewById(R.id.TemasList);
 		
-	    
+	   
+	    temasListView.setClickable(true);
+	    temasListView.setOnItemClickListener(ListClickListener);
+        
+	     
+	  //  DBHelper helper = new DBHelper(this);
+      //  SQLiteDatabase db = helper.getWritableDatabase();
+      //  db.execSQL(DatabaseManager.CREATE_TABLE);
+		//db.execSQL(DatabaseManager.CREATE_TABLE2);
+		
+        
+        
 	}
 
 	@Override
@@ -47,5 +71,17 @@ public class MainActivity extends Activity {
 		Intent settingsActivity = new Intent(getBaseContext(), TemaBuscar.class);
       	startActivity(settingsActivity); 
     }
-
+    
+	private OnItemClickListener ListClickListener = new OnItemClickListener() {
+        public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
+        /*    	Intent act = new Intent(getApplicationContext(), Respuesta.class);
+        		act.putExtra("email", listTrueques.get(arg2).getEmail());
+        	    act.putExtra("titulo", listTrueques.get(arg2).getTipo());
+        	    act.putExtra("descripcion", listTrueques.get(arg2).getDescripcion());
+        	    act.putExtra("valor", listTrueques.get(arg2).getValor());
+        	    act.putExtra("idobjeto", listTrueques.get(arg2).getIdObjeto());
+                 startActivity(act);
+        */
+        }
+	};
 }
