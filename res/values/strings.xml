@@ -9,6 +9,8 @@
     <string name="title_activity_tema_info">TemaInfo</string>
     <string name="title_activity_tema_respuesta">TemaRespuesta</string>
     <string name="titulo">Titulo</string>
+      <string name="titulo2">Titulo Contenido</string>
     <string name="title_activity_temas_row">Temas_row</string>
+    <string name="textview">TextView</string>
 
 </resources>

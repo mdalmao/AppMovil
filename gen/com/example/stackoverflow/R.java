@@ -229,7 +229,7 @@ containing a value of this type.
         public static final int volver=0x7f020002;
     }
     public static final class id {
-        public static final int TemasList=0x7f040017;
+        public static final int TemasListPrincipal=0x7f040017;
         public static final int action_settings=0x7f040026;
         public static final int alignBounds=0x7f040002;
         public static final int alignMargins=0x7f040003;
@@ -289,12 +289,14 @@ containing a value of this type.
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060002;
+        public static final int textview=0x7f06000a;
         public static final int title_activity_tema_buscar=0x7f060004;
         public static final int title_activity_tema_info=0x7f060005;
         public static final int title_activity_tema_respuesta=0x7f060006;
         public static final int title_activity_temanuevo=0x7f060003;
-        public static final int title_activity_temas_row=0x7f060008;
+        public static final int title_activity_temas_row=0x7f060009;
         public static final int titulo=0x7f060007;
+        public static final int titulo2=0x7f060008;
     }
     public static final class style {
         /** 

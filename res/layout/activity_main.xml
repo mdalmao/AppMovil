@@ -47,7 +47,7 @@
         </TableRow>
     </TableLayout>
     <ListView
-        android:id="@+id/TemasList"
+        android:id="@+id/TemasListPrincipal"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="#ff00a2b2" />

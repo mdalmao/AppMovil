@@ -16,7 +16,7 @@ int dimen default_gap 0x7f050000
 int drawable guardar 0x7f020000
 int drawable ic_launcher 0x7f020001
 int drawable volver 0x7f020002
-int id TemasList 0x7f040017
+int id TemasListPrincipal 0x7f040017
 int id action_settings 0x7f040026
 int id alignBounds 0x7f040002
 int id alignMargins 0x7f040003
@@ -70,12 +70,14 @@ int menu temas_row 0x7f080005
 int string action_settings 0x7f060001
 int string app_name 0x7f060000
 int string hello_world 0x7f060002
+int string textview 0x7f06000a
 int string title_activity_tema_buscar 0x7f060004
 int string title_activity_tema_info 0x7f060005
 int string title_activity_tema_respuesta 0x7f060006
 int string title_activity_temanuevo 0x7f060003
-int string title_activity_temas_row 0x7f060008
+int string title_activity_temas_row 0x7f060009
 int string titulo 0x7f060007
+int string titulo2 0x7f060008
 int style AppBaseTheme 0x7f070000
 int style AppTheme 0x7f070001
 int[] styleable GridLayout { 0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005, 0x7f010006 }

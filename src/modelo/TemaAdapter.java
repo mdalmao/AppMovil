@@ -62,5 +62,7 @@ public class TemaAdapter extends BaseAdapter implements OnClickListener {
 			
 		}
 
+		
+
 }
 

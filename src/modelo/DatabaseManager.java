@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DatabaseManager  extends SQLiteOpenHelper {
 	public DatabaseManager(Context context, String name, CursorFactory factory,
@@ -17,6 +18,8 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	public static SQLiteDatabase db;
 	
 	public static final String TABLE_NAME = "temas";
 	public static final String TABLE_NAME2 = "respuesta";
@@ -108,24 +111,28 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 				db.close();
 			}
 
-			public ArrayList<HashMap<String, String>> getAllTemas() {
-				ArrayList<HashMap<String, String>> wordList; wordList = new ArrayList<HashMap<String, String>>();
-				String selectQuery = "SELECT * FROM temas"; 
-				SQLiteDatabase database = this.getWritableDatabase();
-				Cursor cursor = database.rawQuery(selectQuery, null); 
+			public static ArrayList<Temas> getAllTemas() {
+				ArrayList<Temas> wordList; 
+				wordList = new ArrayList<Temas>();
+				
+			 String selectQuery = "SELECT * FROM temas"; 
+			   
+			 Cursor cursor = db.rawQuery(selectQuery, null); 
 				if (cursor.moveToFirst()) {
 					do { 
-					HashMap<String, String> map = new HashMap<String, String>(); 
-					map.put(CN_ID, cursor.getString(0)); 
-					map.put(CN_TITULO, cursor.getString(1));
-					map.put(CN_PREGUNTA, cursor.getString(2));
-					map.put(CN_FECHA, cursor.getString(3));
-					map.put(CN_ESTADO, cursor.getString(4));
-					map.put(CN_NOMBREUSUARIO, cursor.getString(5));
-					map.put(CN_EMAIL, cursor.getString(6));
+				    Temas map = new Temas(); 
+					//map.seput(CN_ID, cursor.getString(0));
+				    map.setId_tema(Integer.valueOf((cursor.getString(0))));
+					map.setTitulo(cursor.getString(1));
+					map.setPregunta(cursor.getString(2));
+					map.setFecha(cursor.getString(3));
+					map.setEstado(cursor.getString(4));
+					map.setNombreusuario(cursor.getString(5));
+					map.setEmail( cursor.getString(6));
 					wordList.add(map);
 					}while (cursor.moveToNext()); 
 					} // return temas list return wordList; }
+				Log.e("DATOS_rEC","RECUPERA "+wordList.get(0).getTitulo());
 				return wordList;
 			}
 			
@@ -156,7 +163,6 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 
 			@Override
 			public void onCreate(SQLiteDatabase db) {
-				// TODO Auto-generated method stub
 				
 			}
 

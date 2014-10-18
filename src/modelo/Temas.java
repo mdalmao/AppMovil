@@ -11,6 +11,18 @@ public class Temas {
 	    private String nombreusuario;
 	    private String email;
 	
+	    public Temas() {
+	    	   super();
+	    	   this.setId_tema(0);
+	           this.setTitulo("");
+	           this.setPregunta("");
+	           this.setFecha("");
+	           this.setEstado("");
+	           this.setNombreusuario("");
+	           this.setEmail("");
+	                   
+	    }
+	    
 	    public Temas(Integer id_tema,String titulo, String pregunta, String fecha, String estado, String nombreusuario, String email) {
 	    	   super();
 	    	   this.setId_tema(id_tema);
