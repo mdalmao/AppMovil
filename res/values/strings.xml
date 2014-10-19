@@ -9,8 +9,17 @@
     <string name="title_activity_tema_info">TemaInfo</string>
     <string name="title_activity_tema_respuesta">TemaRespuesta</string>
     <string name="titulo">Titulo</string>
-      <string name="titulo2">Titulo Contenido</string>
+    <string name="Titulo_tema">Titulo del Tema</string>
+      <string name="responder">Responder</string>
+     <string name="idtema">Id Tema:</string>
+     <string name="prueba">Prubea</string>
+      <string name="nuevo">Nuevo</string>
+       <string name="info">Info</string>
+          <string name="buscar">Buscar</string>
+    <string name="titulo2">Titulo Contenido</string>
     <string name="title_activity_temas_row">Temas_row</string>
     <string name="textview">TextView</string>
+    <string name="title_activity_detalle_tema">DetalleTema</string>
+    <string name="temas">Temas</string>
 
 </resources>

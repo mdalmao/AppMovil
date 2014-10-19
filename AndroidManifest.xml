@@ -38,7 +38,10 @@
             android:name="com.example.stackoverflow.TemaRespuesta"
             android:label="@string/title_activity_tema_respuesta" >
         </activity>
-      
+        <activity
+            android:name="com.example.stackoverflow.DetalleTema"
+            android:label="@string/title_activity_detalle_tema" >
+        </activity>
     </application>
 
 </manifest>
