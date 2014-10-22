@@ -3,6 +3,8 @@ package com.example.stackoverflow;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.view.View;
+import android.webkit.WebView;
 
 public class TemaInfo extends Activity {
 
@@ -18,5 +20,10 @@ public class TemaInfo extends Activity {
 		getMenuInflater().inflate(R.menu.tema_info, menu);
 		return true;
 	}
-
+	
+	public void info2 (View v){
+		WebView myWebView = (WebView) findViewById(R.id.webview);
+		myWebView.loadUrl("http://www.google.com");
+		 
+    }
 }

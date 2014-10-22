@@ -229,15 +229,16 @@ containing a value of this type.
         public static final int volver=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f04002b;
+        public static final int action_settings=0x7f040032;
         public static final int alignBounds=0x7f040002;
         public static final int alignMargins=0x7f040003;
-        public static final int botonGuardar=0x7f040023;
-        public static final int botonVolver=0x7f040024;
-        public static final int botonbuscar=0x7f04001a;
-        public static final int botoninfo=0x7f040019;
-        public static final int botonnuevo=0x7f040018;
+        public static final int botonGuardar=0x7f040027;
+        public static final int botonVolver=0x7f040028;
+        public static final int botonbuscar=0x7f04001b;
+        public static final int botoninfo=0x7f04001a;
+        public static final int botonnuevo=0x7f040019;
         public static final int bottom=0x7f040005;
+        public static final int button1=0x7f04001d;
         public static final int center=0x7f04000c;
         public static final int center_horizontal=0x7f04000a;
         public static final int center_vertical=0x7f040008;
@@ -248,31 +249,37 @@ containing a value of this type.
         public static final int fill_horizontal=0x7f04000b;
         public static final int fill_vertical=0x7f040009;
         public static final int horizontal=0x7f040000;
-        public static final int id_temaTtitulo=0x7f040029;
+        public static final int id_temaTtitulo=0x7f04002d;
         public static final int idtema=0x7f040012;
+        public static final int latitud=0x7f040024;
         public static final int left=0x7f040006;
         public static final int linearLayout1=0x7f040015;
         public static final int list=0x7f040016;
+        public static final int longitud=0x7f040025;
         public static final int responder=0x7f040017;
         public static final int right=0x7f040007;
         public static final int start=0x7f040010;
-        public static final int tableRow3=0x7f040022;
-        public static final int tema_Titulo=0x7f04001c;
-        public static final int tema_email=0x7f040021;
-        public static final int tema_pregunta=0x7f040027;
-        public static final int tema_respuesta=0x7f04001f;
-        public static final int tema_titulo=0x7f040025;
-        public static final int tema_usuario=0x7f040026;
-        public static final int tena_usuario=0x7f04001d;
+        public static final int tableRow1=0x7f040018;
+        public static final int tableRow2=0x7f04002e;
+        public static final int tableRow3=0x7f040026;
+        public static final int tableRow4=0x7f040030;
+        public static final int tema_Titulo=0x7f04001e;
+        public static final int tema_email=0x7f040023;
+        public static final int tema_pregunta=0x7f04002b;
+        public static final int tema_respuesta=0x7f040021;
+        public static final int tema_titulo=0x7f040029;
+        public static final int tema_usuario=0x7f04002a;
+        public static final int tena_usuario=0x7f04001f;
         public static final int textView1=0x7f040013;
-        public static final int textView3=0x7f04001e;
-        public static final int textView4=0x7f040020;
+        public static final int textView3=0x7f040020;
+        public static final int textView4=0x7f040022;
         public static final int titulo=0x7f040014;
         public static final int top=0x7f040004;
-        public static final int txtIntegrantes=0x7f04001b;
-        public static final int txtRespuesta=0x7f040028;
-        public static final int txtTtitulo=0x7f04002a;
+        public static final int txtIntegrantes=0x7f04001c;
+        public static final int txtRespuesta=0x7f04002c;
+        public static final int txtTtitulo=0x7f04002f;
         public static final int vertical=0x7f040001;
+        public static final int webview=0x7f040031;
     }
     public static final class layout {
         public static final int activity_detalle_tema=0x7f030000;
@@ -283,6 +290,7 @@ containing a value of this type.
         public static final int activity_temanuevo=0x7f030005;
         public static final int respuesta_item=0x7f030006;
         public static final int temas_row2=0x7f030007;
+        public static final int webview=0x7f030008;
     }
     public static final class menu {
         public static final int detalle_tema=0x7f080000;
@@ -294,26 +302,31 @@ containing a value of this type.
         public static final int temas_row=0x7f080006;
     }
     public static final class string {
-        public static final int Titulo_tema=0x7f060008;
+        public static final int Titulo_tema=0x7f06000d;
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
-        public static final int buscar=0x7f06000e;
+        public static final int buscar=0x7f060013;
+        public static final int email=0x7f060009;
         public static final int hello_world=0x7f060002;
-        public static final int idtema=0x7f06000a;
-        public static final int info=0x7f06000d;
-        public static final int nuevo=0x7f06000c;
-        public static final int prueba=0x7f06000b;
-        public static final int responder=0x7f060009;
-        public static final int temas=0x7f060013;
-        public static final int textview=0x7f060011;
-        public static final int title_activity_detalle_tema=0x7f060012;
+        public static final int idtema=0x7f06000f;
+        public static final int info=0x7f060012;
+        public static final int latitud=0x7f060008;
+        public static final int longitud=0x7f06000c;
+        public static final int nuevo=0x7f060011;
+        public static final int prueba=0x7f060010;
+        public static final int responder=0x7f06000e;
+        public static final int respuesta=0x7f06000a;
+        public static final int temas=0x7f060018;
+        public static final int textview=0x7f060016;
+        public static final int title_activity_detalle_tema=0x7f060017;
         public static final int title_activity_tema_buscar=0x7f060004;
         public static final int title_activity_tema_info=0x7f060005;
         public static final int title_activity_tema_respuesta=0x7f060006;
         public static final int title_activity_temanuevo=0x7f060003;
-        public static final int title_activity_temas_row=0x7f060010;
+        public static final int title_activity_temas_row=0x7f060015;
         public static final int titulo=0x7f060007;
-        public static final int titulo2=0x7f06000f;
+        public static final int titulo2=0x7f060014;
+        public static final int usuario=0x7f06000b;
     }
     public static final class style {
         /** 

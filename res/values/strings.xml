@@ -9,6 +9,11 @@
     <string name="title_activity_tema_info">TemaInfo</string>
     <string name="title_activity_tema_respuesta">TemaRespuesta</string>
     <string name="titulo">Titulo</string>
+    <string name="latitud">Latitud</string>
+    <string name="email">Email</string>
+    <string name="respuesta">Respuesta</string>
+    <string name="usuario">Usuario</string>
+    <string name="longitud">Longitud</string>
     <string name="Titulo_tema">Titulo del Tema</string>
       <string name="responder">Responder</string>
      <string name="idtema">Id Tema:</string>

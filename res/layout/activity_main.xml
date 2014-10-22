@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#0C9681"
     android:orientation="horizontal" >
 
     <TextView
@@ -11,12 +12,19 @@
         android:layout_marginTop="20dp"
         android:text="@string/temas"
         android:textSize="20sp" />
+    
+    
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <ImageButton
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            
+             <ImageButton
             android:id="@+id/botonnuevo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,18 +48,22 @@
             android:layout_height="wrap_content"
             android:onClick="buscar"
             android:src="@android:drawable/ic_menu_search" />
-          
-            <ListView
-        android:id="@+id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
         
-                </ListView>
+        </TableRow>
+
+       
+       
+          
     </TableLayout>
 
-    
-    
-      
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="299dp"
+        android:layout_height="362dp"
+        android:layout_marginLeft="-300sp"
+        android:layout_marginTop="100sp" >
+
+    </ListView>
     
 </LinearLayout>
 

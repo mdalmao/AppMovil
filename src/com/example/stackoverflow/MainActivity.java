@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -63,6 +64,7 @@ public class MainActivity extends Activity {
 		Intent settingsActivity = new Intent(getBaseContext(), TemaInfo.class);
       	startActivity(settingsActivity); 
     }
+	
 	
 	
 	private OnItemClickListener ListClickListener = new OnItemClickListener() {
