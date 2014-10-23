@@ -118,7 +118,7 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 			 String selectQuery = "SELECT * FROM temas"; 
 			   
 			 Cursor cursor = db.rawQuery(selectQuery, null); 
-				if (cursor.moveToFirst()) {
+			 if (cursor.moveToFirst()) {
 					do { 
 				    Temas map = new Temas(); 
 					//map.seput(CN_ID, cursor.getString(0));
@@ -141,21 +141,37 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 			public static ArrayList<Respuesta> getAllRespuestas(Integer id_tema) {
 				ArrayList<Respuesta> wordList; 
 				wordList = new ArrayList<Respuesta>();
-				/*
-				String[] valores_recuperar = {"Id_Tema","Id_Respuesta","Id_Tema", "Respuesta","Fecha","X","Y","NombreUsuario","Email" };
-			   	Cursor cursor = db.query("respuesta", valores_recuperar , "Id_Tema="+id_tema,null, null, null, null, null);
-               */
-				String selectQuery = "SELECT * FROM respuesta"; 
+				String selectQuery = "SELECT * FROM respuesta "; 
 				Cursor cursor = db.rawQuery(selectQuery, null);
 				if (cursor.moveToFirst()) {
 					do { 
-					Respuesta map = new Respuesta(cursor.getInt(0),cursor.getInt(1), cursor.getString(2),  cursor.getString(3), cursor.getFloat(4),  cursor.getFloat(5),  cursor.getString(6),  cursor.getString(7)); 
-					wordList.add(map);
+				   if ( cursor.getInt(1) == id_tema){
+						Respuesta map = new Respuesta(cursor.getInt(0),cursor.getInt(1), cursor.getString(2),  cursor.getString(3), cursor.getFloat(4),  cursor.getFloat(5),  cursor.getString(6),  cursor.getString(7)); 
+					    wordList.add(map);
+				    }
 					}while (cursor.moveToNext()); 
 					} // return respuesta list return wordList; }
 				return wordList;
 			}
 
+			//Integer id_respuesta, Integer id_tema,String respuesta, String fecha, Float X, Float Y, String nombreusuario, String email
+			public static ArrayList<Respuesta> NotificacionMail(Integer id_tema) {
+				ArrayList<Respuesta> wordList; 
+				wordList = new ArrayList<Respuesta>();
+				String selectQuery = "SELECT * FROM respuesta "; 
+				Cursor cursor = db.rawQuery(selectQuery, null);
+				if (cursor.moveToFirst()) {
+					do { 
+				    if ( cursor.getInt(1) == id_tema){
+						//Respuesta map = new Respuesta(cursor.getInt(0),cursor.getInt(1), cursor.getString(2),  cursor.getString(3), cursor.getFloat(4),  cursor.getFloat(5),  cursor.getString(6),  cursor.getString(7)); 
+					   // wordList.add(map);
+				    	String email = cursor.getString(7);
+				    	
+				    }
+					}while (cursor.moveToNext()); 
+					} // return respuesta list return wordList; }
+				return wordList;
+			}
 		
 
 
@@ -164,13 +180,28 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 				
 			}
 
-
-
-
-			@Override
+    		@Override
 			public void onUpgrade(SQLiteDatabase db, int oldVersion,
 					int newVersion) {
 				// TODO Auto-generated method stub
 				
 			}
-}
+
+			public static String getInfoTema(long id) {
+				String texto= "";
+				    String selectQuery = "SELECT * FROM temas "; 
+					Cursor cursor = db.rawQuery(selectQuery, null);
+					if (cursor.moveToFirst()) {
+						do { 
+					   if ( cursor.getInt(0) == id+1){
+						    texto= "Creador de " +  cursor.getString(1) + " es " + cursor.getString(5) ;
+					    }
+						}while (cursor.moveToNext()); 
+						} // return respuesta list return wordList; }
+				
+				
+				return texto;
+				
+			}
+			
+	}

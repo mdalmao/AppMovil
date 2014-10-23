@@ -3,11 +3,13 @@ package com.example.stackoverflow;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
-import funcionalidades.GMailSender;
+
+
 import modelo.DatabaseManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -88,7 +90,13 @@ public class TemaRespuesta extends Activity {
         Toast toast1 = Toast.makeText(getApplicationContext(), "Gracias por responder en este tema", Toast.LENGTH_SHORT);
         toast1.show();
         this.pd.dismiss();
-       // enviarmail();
+        enviarmail();
+      
+        /*
+        String[] to = { "mdalmaouy@gmail.com", "marcelo_dalmao@hotmail.com" };
+        String[] cc = { "mdalmao@sisinfo.com.uy" };
+        enviar(to, cc, "Hola","Esto es un email enviado desde una app de Android");
+        */
         volver(v);
         
 		
@@ -96,16 +104,29 @@ public class TemaRespuesta extends Activity {
 
 	public void enviarmail(){
 		try {   
-            GMailSender sender = new GMailSender("username@gmail.com", "password");
-            sender.sendMail("This is Subject",   
-                    "This is Body",   
-                    "mdalmaouy@gmail.com",   
-                    "mdalmaouy@gmail.com");   
+            GMailEnvio sender = new GMailEnvio("mdalmaouy@gmail.com", "clave");
+            sender.sendMail("This is Subject", "This is Body", "mdalmaouy@gmail.com", "mdalmaouy@gmail.com");   
+            
         } catch (Exception e) {   
             Log.e("SendMail", e.getMessage(), e);   
         } 
 
 	}
+	
+	
+	private void enviar(String[] to, String[] cc,
+	        String asunto, String mensaje) {
+	        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+	        emailIntent.setData(Uri.parse("mailto:"));
+	        //String[] to = direccionesEmail;
+	        //String[] cc = copias;
+	        emailIntent.putExtra(Intent.EXTRA_EMAIL, to);
+	        emailIntent.putExtra(Intent.EXTRA_CC, cc);
+	        emailIntent.putExtra(Intent.EXTRA_SUBJECT, asunto);
+	        emailIntent.putExtra(Intent.EXTRA_TEXT, mensaje);
+	        emailIntent.setType("message/rfc822");
+	        startActivity(Intent.createChooser(emailIntent, "Email "));
+	    }
 	
 	public void volver (View v){
 		Intent act = new Intent(getBaseContext(), DetalleTema.class);

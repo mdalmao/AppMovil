@@ -4,6 +4,7 @@ package com.example.stackoverflow;
 import modelo.DBHelper;
 import modelo.DatabaseManager;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class Temanuevo extends Activity {
@@ -19,6 +21,7 @@ public class Temanuevo extends Activity {
 	EditText pregunta;
 	EditText email;
 	EditText nombreusuario;
+	private ProgressDialog pd = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +63,12 @@ public class Temanuevo extends Activity {
 		
         Log.e("DATOS", "titulo: " + titulo.getText().toString() + " pregunta: " +  pregunta.getText().toString());	
 		
+        Toast toast1 = Toast.makeText(getApplicationContext(), "Gracias por Crear un tema", Toast.LENGTH_SHORT);
+        toast1.show();
+        this.pd.dismiss();
+        volver(v);
         
-        /*
-         String DB_NAME = "tarea";
-         DatabaseManager a= new DatabaseManager(this, DB_NAME, null, 0);	
-         a.insertar_tema(titulo.getText().toString(), pregunta.getText().toString(), nombreusuario.getText().toString(), email.getText().toString());
-        */
+        
 		
     }
 	

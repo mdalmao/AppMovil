@@ -38,7 +38,8 @@ public class DetalleTema extends Activity {
 	    DatabaseManager.db = openOrCreateDatabase("tarea", SQLiteDatabase.OPEN_READWRITE, null);
 	  //  DatabaseManager.db.execSQL("DROP TABLE IF EXISTS respuesta");
 		DatabaseManager.db.execSQL(DatabaseManager.CREATE_TABLE);
-		ArrayList<Respuesta> listRespuesta = DatabaseManager.getAllRespuestas(recibo.getInt("idtema")); 
+	    Log.e("DATOS22","VALOR DE ID "+ idtematexto);  
+		ArrayList<Respuesta> listRespuesta = DatabaseManager.getAllRespuestas(Integer.valueOf(idtematexto)); 
 	    Log.e("DATOS","traigo los datos de respuestas ");  
 	    if (listRespuesta.size() >=1){
 	   // listTemas.add(a);
