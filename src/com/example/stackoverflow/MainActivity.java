@@ -109,7 +109,10 @@ public class MainActivity extends Activity {
 		Intent settingsActivity = new Intent(getBaseContext(), TemaInfo.class);
       	startActivity(settingsActivity); 
     }
-	
+	public void buscar (View v){
+		Intent settingsActivity = new Intent(getBaseContext(), TemaBuscar.class);
+      	startActivity(settingsActivity); 
+    }
 	
 	
 	private OnItemClickListener ListClickListener = new OnItemClickListener() {

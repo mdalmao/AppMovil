@@ -137,6 +137,32 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 			}
 			
 			
+			public static ArrayList<Temas> BuscarPalabra(String textSearch){
+				ArrayList<Temas> wordList; 
+				wordList = new ArrayList<Temas>();
+				
+				String selectQuery = "SELECT * FROM temas WHERE NombreUsuario LIKE '%textSearch%'"; 
+				
+				Cursor cursor = db.rawQuery(selectQuery, null); 
+				 if (cursor.moveToFirst()) {
+						do { 
+					    Temas map = new Temas(); 
+						//map.seput(CN_ID, cursor.getString(0));
+					    map.setId_tema(cursor.getInt(0));
+						map.setTitulo(cursor.getString(1));
+						map.setPregunta(cursor.getString(2));
+						map.setFecha(cursor.getString(3));
+						map.setEstado(cursor.getString(4));
+						map.setNombreusuario(cursor.getString(5));
+						map.setEmail( cursor.getString(6));
+						wordList.add(map);
+						}while (cursor.moveToNext()); 
+						} // return temas list return wordList; }
+				Log.e("DATOS_rEC","RECUPERA "+wordList.get(0).getId_tema());								
+				return wordList;								
+			}
+			
+			
 			//Integer id_respuesta, Integer id_tema,String respuesta, String fecha, Float X, Float Y, String nombreusuario, String email
 			public static ArrayList<Respuesta> getAllRespuestas(Integer id_tema) {
 				ArrayList<Respuesta> wordList; 

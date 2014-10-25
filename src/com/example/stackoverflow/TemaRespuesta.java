@@ -103,13 +103,13 @@ public class TemaRespuesta extends Activity {
     }
 
 	public void enviarmail(){
-		try {   
+		/*try {   
             GMailEnvio sender = new GMailEnvio("mdalmaouy@gmail.com", "clave");
             sender.sendMail("This is Subject", "This is Body", "mdalmaouy@gmail.com", "mdalmaouy@gmail.com");   
             
         } catch (Exception e) {   
             Log.e("SendMail", e.getMessage(), e);   
-        } 
+        } */
 
 	}
 	
