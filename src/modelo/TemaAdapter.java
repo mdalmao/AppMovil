@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.stackoverflow.R;
@@ -16,11 +17,14 @@ import android.widget.TextView;
 public class TemaAdapter extends BaseAdapter implements OnClickListener {
 	    private Context context;
 	    private List<Temas> listTema;
-
+	   
+	  
+	    
 	    public TemaAdapter(Context context, List<Temas> listTema) {
 	    	 this.context = context;
 	         this.listTema = listTema;
 		}
+
 
 		public int getCount() {
 	        return listTema.size();
@@ -35,20 +39,18 @@ public class TemaAdapter extends BaseAdapter implements OnClickListener {
 	    }
 
 	    public View getView(int position, View convertView, ViewGroup viewGroup) {
-	        Temas entry = listTema.get(position);
+	    	  ListTemas entry = new ListTemas(context, listTema.get(position) ); 
+	       /* Temas entry = listTema.get(position);
 	        if (convertView == null) {
-	            LayoutInflater inflater = (LayoutInflater) context
-	            		.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	            convertView = inflater.inflate(R.layout.temas_row2 , null);
-	        
 	        }
-  	        
-	        TextView tvTitle = (TextView) convertView.findViewById(R.id.txtTtitulo);
+  	        TextView tvTitle = (TextView) convertView.findViewById(R.id.txtTtitulo);
 	        tvTitle.setText(entry.getTitulo());
 	        
-	     
-
 	        return convertView;
+	        */
+	    	return entry;  
 	    }
 
 		public void onClick(View arg0) {

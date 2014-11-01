@@ -1,27 +1,26 @@
 package com.example.stackoverflow;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
-
-import modelo.DBHelper;
 import modelo.DatabaseManager;
 import modelo.TemaAdapter;
 import modelo.Temas;
-import android.R.string;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.webkit.WebView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class MainActivity extends Activity {
@@ -30,7 +29,7 @@ public class MainActivity extends Activity {
 	ImageButton botonbuscar;
 	ImageButton botonnuevo;
 	ImageButton botoninfo;
-	
+	private ProgressDialog pd = null;
 	
     public ArrayList<Temas> listTemas = new ArrayList<Temas>();
    
@@ -38,26 +37,62 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-	    temasListView =(ListView) findViewById(R.id.TemasListPrincipal);
+	    temasListView =(ListView) findViewById(R.id.listbuscar);
 	    
 	    TemaAdapter adapter;
 	    DatabaseManager.db = openOrCreateDatabase("tarea", SQLiteDatabase.OPEN_READWRITE, null);
-		DatabaseManager.db.execSQL(DatabaseManager.CREATE_TABLE2);
-	    listTemas= DatabaseManager.getAllTemas(); 
-	       
-        Log.e("DATOS","Entro");
-	    adapter = new TemaAdapter(getApplicationContext(), listTemas);
-	    Log.e("DATOS","Cantidad " + adapter.getCount());  
+		try {
+            DatabaseManager.db.execSQL("SELECT * FROM temas");
+        } catch (SQLiteException xp) {
+        	//Sino existe creo la tabla y le agrego un tema
+        	DatabaseManager.db.execSQL(DatabaseManager.CREATE_TABLE2);
+    	    Log.v("hi", "table created");
+    	    DatabaseManager.db.beginTransaction();
+            String estado ="1";
+            String fecha="2014-01-01";
+            DatabaseManager.db.execSQL("INSERT INTO temas(titulo,pregunta, nombreusuario, email, fecha, estado) VALUES ('Tema de Prueba','Le gusto el sistema?','mdalmao','mdalmaouy@gmail.com','22/10/2014','1');");
+            DatabaseManager.db.setTransactionSuccessful();
+            DatabaseManager.db.endTransaction();    
+        }
+	    listTemas= DatabaseManager.getAllTemas();
 	   
-	   	    
-	    temasListView.setAdapter(adapter);
-	    //temasListView.setAdapter(new ArrayAdapter<Temas>(this,R.layout.temas_row2,listTemas));	 
-	    temasListView.setClickable(true);
-		temasListView.setOnItemClickListener(ListClickListener);
-		       
+	    if (listTemas.size()>= 1){
+	     Log.e("DATOS","Entro");
+	     adapter = new TemaAdapter(this, listTemas);
+	     
+	     temasListView.setAdapter(adapter);
+	     temasListView.setClickable(true);
+		 temasListView.setOnItemClickListener(ListClickListener);
+		 
+		 temasListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+			    @Override
+			    public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
+			        return onLongListItemClick(v,pos,id);
+			    }
+
+				private boolean onLongListItemClick(View v, int pos, long id) {
+					 Log.i("DATOS", "onLongListItemClick id=" + id);
+					 String texto= DatabaseManager.getInfoTema(id);
+					 Toast toast = Toast.makeText(getApplicationContext(), "DATOS" + texto, Toast.LENGTH_SHORT);
+				     View textView = toast.getView();
+				     LinearLayout lay = new LinearLayout(getApplicationContext());
+				      lay.setOrientation(LinearLayout.HORIZONTAL);
+				      lay.setMinimumWidth(400);
+				    //  ImageView view = new ImageView(getApplicationContext());
+				     // view.setImageResource(android.R.drawable.ic_menu_info_details);
+				      //lay.addView(view);
+				      
+				      lay.addView(textView);
+				      toast.setView(lay);
+				      toast.show();	
+					    return true;
+
+				}
+			});
+
 	}
 	
-	
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -78,17 +113,18 @@ public class MainActivity extends Activity {
 		Intent settingsActivity = new Intent(getBaseContext(), TemaBuscar.class);
       	startActivity(settingsActivity); 
     }
-    
+	
+	
 	private OnItemClickListener ListClickListener = new OnItemClickListener() {
         public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
-            	Intent act = new Intent(getApplicationContext(),TemaRespuesta.class);
-        		//act.putExtra("email", listTrueques.get(arg2).getEmail());
-        	     act.putExtra("titulo", listTemas.get(arg2).getTitulo());
-        	    //act.putExtra("descripcion", listTrueques.get(arg2).getDescripcion());
-        	    //act.putExtra("valor", listTrueques.get(arg2).getValor());
-        	    //act.putExtra("idobjeto", listTrueques.get(arg2).getIdObjeto());
-                 startActivity(act);
+            	Intent act = new Intent(getApplicationContext(),DetalleTema.class);
+            	String valoridtema= String.valueOf(listTemas.get(arg2).getId_tema());
+        		act.putExtra("idtema", valoridtema);
+        	    act.putExtra("titulo", listTemas.get(arg2).getTitulo());
+        	    startActivity(act);
         
         }
 	};
+	
+	
 }

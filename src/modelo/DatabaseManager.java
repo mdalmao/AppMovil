@@ -49,8 +49,8 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 			+ CN_TEMA + " integer ,"
 			+ CN_RESPUESTA + " text not null," 
 			+ CN_FECHARESP + " text not null,"
-			+ CN_X + " real not null,"
-			+ CN_Y + " real not null,"
+			+ CN_X + " float not null,"
+			+ CN_Y + " float not null,"
 			+ CN_NOMBREUSUARIORESP + " text not null,"
 			+ CN_EMAILRESP + " text not null);";
 	
@@ -118,11 +118,11 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 			 String selectQuery = "SELECT * FROM temas"; 
 			   
 			 Cursor cursor = db.rawQuery(selectQuery, null); 
-				if (cursor.moveToFirst()) {
+			 if (cursor.moveToFirst()) {
 					do { 
 				    Temas map = new Temas(); 
 					//map.seput(CN_ID, cursor.getString(0));
-				    map.setId_tema(Integer.valueOf((cursor.getString(0))));
+				    map.setId_tema(cursor.getInt(0));
 					map.setTitulo(cursor.getString(1));
 					map.setPregunta(cursor.getString(2));
 					map.setFecha(cursor.getString(3));
@@ -132,32 +132,116 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 					wordList.add(map);
 					}while (cursor.moveToNext()); 
 					} // return temas list return wordList; }
-				Log.e("DATOS_rEC","RECUPERA "+wordList.get(0).getTitulo());
+				Log.e("DATOS_rEC","RECUPERA miraaaa "+wordList.get(0).getId_tema());
 				return wordList;
 			}
 			
-			public ArrayList<HashMap<String, String>> getAllRespuestas(Integer id_tema) {
-				ArrayList<HashMap<String, String>> wordList; wordList = new ArrayList<HashMap<String, String>>();
-				String selectQuery = "SELECT * FROM respuestas where Id_Tema='"+id_tema+"'";
-     			SQLiteDatabase database = this.getWritableDatabase();
-				Cursor cursor = database.rawQuery(selectQuery, null); 
+			
+			public static ArrayList<Temas> BuscarPalabra(String textSearch, String tipoSearch){
+				ArrayList<Temas> wordList; 
+				wordList = new ArrayList<Temas>();
+				
+			
+				if(tipoSearch.equals("Usuario")){
+					Log.e("DATOS","entro a la igualdad");
+					tipoSearch = "nombreusuario";
+				}
+				
+				String selectQuery = "SELECT * FROM temas WHERE " + tipoSearch + " LIKE '%" + textSearch + "%'"; 
+				
+				if(selectQuery.isEmpty())
+				{
+					return null;
+				}
+				else
+				{
+					Cursor cursor = db.rawQuery(selectQuery, null); 
+					 if (cursor.moveToFirst()) {
+							do { 
+						    Temas map = new Temas(); 
+							//map.seput(CN_ID, cursor.getString(0));
+						    map.setId_tema(cursor.getInt(0));
+							map.setTitulo(cursor.getString(1));
+							map.setPregunta(cursor.getString(2));
+							map.setFecha(cursor.getString(3));
+							map.setEstado(cursor.getString(4));
+							map.setNombreusuario(cursor.getString(5));
+							map.setEmail( cursor.getString(6));
+							wordList.add(map);
+							}while (cursor.moveToNext()); 
+							} // return temas list return wordList; }
+					Log.e("DATOS_rEC","RECUPERA "+wordList.get(0).getId_tema());								
+					return wordList;
+				}
+				
+												
+			}
+			
+			public static String pregunta( Integer id_tema){
+				String texto="";
+                String selectQuery = "SELECT * FROM temas WHERE " + CN_ID + " = " + id_tema ; 
+				
+				if(selectQuery.isEmpty())
+				{
+					return texto;
+				}
+				else
+				{
+					Cursor cursor = db.rawQuery(selectQuery, null); 
+					 if (cursor.moveToFirst()) {
+							do { 
+						    Temas map = new Temas(); 
+							//map.seput(CN_ID, cursor.getString(0));
+						    map.setId_tema(cursor.getInt(0));
+							map.setTitulo(cursor.getString(1));
+							map.setPregunta(cursor.getString(2));
+							map.setFecha(cursor.getString(3));
+							map.setEstado(cursor.getString(4));
+							map.setNombreusuario(cursor.getString(5));
+							map.setEmail( cursor.getString(6));
+						    texto= cursor.getString(2);
+							}while (cursor.moveToNext()); 
+							} // return temas list return wordList; }
+					
+				}
+				return texto;
+			}
+			
+			//Integer id_respuesta, Integer id_tema,String respuesta, String fecha, Float X, Float Y, String nombreusuario, String email
+			public static ArrayList<Respuesta> getAllRespuestas(Integer id_tema) {
+				ArrayList<Respuesta> wordList; 
+				wordList = new ArrayList<Respuesta>();
+				String selectQuery = "SELECT * FROM respuesta "; 
+				Cursor cursor = db.rawQuery(selectQuery, null);
 				if (cursor.moveToFirst()) {
 					do { 
-					HashMap<String, String> map = new HashMap<String, String>(); 
-					map.put(CN_IDRESPUESTA, cursor.getString(0)); 
-					map.put(CN_TITULO, cursor.getString(1));
-					map.put(CN_TITULO, cursor.getString(1));
-					map.put(CN_PREGUNTA, cursor.getString(2));
-					map.put(CN_FECHA, cursor.getString(3));
-					map.put(CN_ESTADO, cursor.getString(4));
-					map.put(CN_NOMBREUSUARIO, cursor.getString(5));
-					map.put(CN_EMAIL, cursor.getString(6));
-					wordList.add(map);
+				   if ( cursor.getInt(1) == id_tema){
+						Respuesta map = new Respuesta(cursor.getInt(0),cursor.getInt(1), cursor.getString(2),  cursor.getString(3), cursor.getFloat(4),  cursor.getFloat(5),  cursor.getString(6),  cursor.getString(7)); 
+					    wordList.add(map);
+				    }
 					}while (cursor.moveToNext()); 
-					} // return temas list return wordList; }
+					} // return respuesta list return wordList; }
 				return wordList;
 			}
 
+			//Integer id_respuesta, Integer id_tema,String respuesta, String fecha, Float X, Float Y, String nombreusuario, String email
+			public static ArrayList<Respuesta> NotificacionMail(Integer id_tema) {
+				ArrayList<Respuesta> wordList; 
+				wordList = new ArrayList<Respuesta>();
+				String selectQuery = "SELECT * FROM respuesta "; 
+				Cursor cursor = db.rawQuery(selectQuery, null);
+				if (cursor.moveToFirst()) {
+					do { 
+				    if ( cursor.getInt(1) == id_tema){
+						//Respuesta map = new Respuesta(cursor.getInt(0),cursor.getInt(1), cursor.getString(2),  cursor.getString(3), cursor.getFloat(4),  cursor.getFloat(5),  cursor.getString(6),  cursor.getString(7)); 
+					   // wordList.add(map);
+				    	String email = cursor.getString(7);
+				    	
+				    }
+					}while (cursor.moveToNext()); 
+					} // return respuesta list return wordList; }
+				return wordList;
+			}
 		
 
 
@@ -166,13 +250,28 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 				
 			}
 
-
-
-
-			@Override
+    		@Override
 			public void onUpgrade(SQLiteDatabase db, int oldVersion,
 					int newVersion) {
 				// TODO Auto-generated method stub
 				
 			}
-}
+
+			public static String getInfoTema(long id) {
+				String texto= "";
+				    String selectQuery = "SELECT * FROM temas "; 
+					Cursor cursor = db.rawQuery(selectQuery, null);
+					if (cursor.moveToFirst()) {
+						do { 
+					   if ( cursor.getInt(0) == id+1){
+						    texto= "Creador de " +  cursor.getString(1) + " es " + cursor.getString(5) ;
+					    }
+						}while (cursor.moveToNext()); 
+						} // return respuesta list return wordList; }
+				
+				
+				return texto;
+				
+			}
+			
+	}

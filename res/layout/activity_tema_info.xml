@@ -8,23 +8,94 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".TemaInfo" >
 
+    <requestFocus />
+
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/info2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="22dp"
-        android:text="Integrantes" />
+        android:layout_alignLeft="@+id/info1"
+        android:layout_below="@+id/info1"
+        android:text="Nuevo Tema: Para crear una consulta damos en el botón + y completamos los campos. Luego los usuarios del sistema podrán proponer respuestas a tu tema. "
+        android:textSize="@dimen/info2"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/info3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/info2"
+        android:layout_below="@+id/info2"
+        android:text="Responder: Elegimos uno de los temas que se despliegan al inicio, completamos los datos y damos en guardar, se enviara un correo a todos los involucrados en el tema para que vean tu comentario."
+        android:textSize="@dimen/info2"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txtIntegrantes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/TextView01"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="36dp"
+        android:text="Ayuda:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtIntegrantes"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="41dp"
+        android:text="Integrantes:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/integrante2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="22dp"
-        android:text="TextView" />
+        android:layout_marginLeft="16dp"
+        android:text="Vanessa Cáseres" />
+
+    <TextView
+        android:id="@+id/integrante3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/integrante2"
+        android:layout_below="@+id/integrante2"
+        android:text="Karina Lanata" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/integrante3"
+        android:layout_below="@+id/integrante3"
+        android:text="Marcelo Dalmao" />
+
+    <TextView
+        android:id="@+id/info1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtIntegrantes"
+        android:layout_below="@+id/txtIntegrantes"
+        android:layout_marginTop="18dp"
+        android:text="Esta es una aplicación para poder proponer una pregunta a la comunidad de desarrolladores y obtener una respuesta a la misma."
+        android:textSize="@dimen/info2"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/info3"
+        android:layout_alignRight="@+id/info3"
+        android:layout_below="@+id/info3"
+        android:text="Busqueda: Se prodra buscar un Tema por nombre de usuario, palabra clave o fecha."
+        android:textSize="@dimen/info2"
+        android:textStyle="bold" />
 
 </RelativeLayout>

@@ -5,9 +5,15 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="9"
         android:targetSdkVersion="18" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -38,7 +44,10 @@
             android:name="com.example.stackoverflow.TemaRespuesta"
             android:label="@string/title_activity_tema_respuesta" >
         </activity>
-      
+        <activity
+            android:name="com.example.stackoverflow.DetalleTema"
+            android:label="@string/title_activity_detalle_tema" >
+        </activity>
     </application>
 
 </manifest>
