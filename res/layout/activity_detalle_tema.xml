@@ -35,6 +35,7 @@
         android:layout_marginTop="10dp"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
+<<<<<<< HEAD
     
      <TextView
         android:id="@+id/textView3"
@@ -54,6 +55,8 @@
         android:layout_marginTop="35dp"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
+=======
+>>>>>>> a597549223479e3951a85a89c5c668e2f945ba53
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -64,7 +67,11 @@
             android:id="@+id/listbuscar"
             android:layout_width="fill_parent"
             android:layout_height="286dp"
+<<<<<<< HEAD
             android:layout_marginTop="90dp" >
+=======
+            android:layout_marginTop="50dp" >
+>>>>>>> a597549223479e3951a85a89c5c668e2f945ba53
 
         </ListView>
     </LinearLayout>

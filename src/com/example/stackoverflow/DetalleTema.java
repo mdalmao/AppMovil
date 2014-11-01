@@ -18,18 +18,26 @@ import android.widget.TextView;
 
 public class DetalleTema extends Activity {
 
+<<<<<<< HEAD
 	private TextView titulo,idtema, pregunta;
+=======
+	private TextView titulo,idtema;
+>>>>>>> a597549223479e3951a85a89c5c668e2f945ba53
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detalle_tema);
 		titulo =(TextView) findViewById(R.id.titulo);
+<<<<<<< HEAD
 		pregunta =(TextView) findViewById(R.id.pregunta);
+=======
+>>>>>>> a597549223479e3951a85a89c5c668e2f945ba53
 		idtema =(TextView) findViewById(R.id.idtema);
 		
 		Bundle recibo = getIntent().getExtras();
 		String titulotext = recibo.getString("titulo");
 		String idtematexto = String.valueOf(recibo.getString("idtema"));
+<<<<<<< HEAD
 		
 		//Falta pasar la pregunta de un lado para el otro
 		String preguntatext = DatabaseManager.pregunta(Integer.valueOf(idtematexto));
@@ -37,6 +45,10 @@ public class DetalleTema extends Activity {
 		titulo.setText(titulotext);
 		idtema.setText(idtematexto);
 		pregunta.setText(preguntatext);
+=======
+		titulo.setText(titulotext);
+		idtema.setText(idtematexto);
+>>>>>>> a597549223479e3951a85a89c5c668e2f945ba53
 		
 		ListView respuestaListView = (ListView) findViewById(R.id.listbuscar);
 	    

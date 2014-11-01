@@ -111,7 +111,11 @@ public class TemaBuscar extends Activity {
 					      lay.setMinimumWidth(400);
 					    //  ImageView view = new ImageView(getApplicationContext());
 					     // view.setImageResource(android.R.drawable.ic_menu_info_details);
+<<<<<<< HEAD
 					      //lay.addView(view);
+=======
+					      //lay.addView(view); esto es una prueba
+>>>>>>> a597549223479e3951a85a89c5c668e2f945ba53
 					      
 					      lay.addView(textView);
 					      toast.setView(lay);

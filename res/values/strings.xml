@@ -15,7 +15,10 @@
     <string name="usuario">Usuario</string>
     <string name="longitud">Longitud</string>
     <string name="Titulo_tema">Titulo del Tema</string>
+<<<<<<< HEAD
         <string name="Titulo_pregunta">Pregunta</string>
+=======
+>>>>>>> a597549223479e3951a85a89c5c668e2f945ba53
       <string name="responder">Responder</string>
      <string name="idtema">Id Tema:</string>
      <string name="prueba">Prubea</string>
