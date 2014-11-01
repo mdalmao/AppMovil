@@ -54,9 +54,23 @@ public class TemaBuscar extends Activity {
 		/*Le indicamos al spinner el adaptador a usar*/
 		spinner.setAdapter(adapter);
 		
-		
+		addListenerOnSpinnerItemSelection();
 		
 	}
+	
+	// Add spinner data
+    
+    public void addListenerOnSpinnerItemSelection(){
+    	/*Log.e("DATOS",String.valueOf(spinner.getSelectedItem()));
+    	
+    			if(String.valueOf(spinner.getSelectedItem()) == "Fecha")
+    			{
+    				 spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+    			}   */
+    	
+    	Log.e("DATOS",String.valueOf(spinner.getSelectedItem()));
+    	 spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,7 +80,9 @@ public class TemaBuscar extends Activity {
 	}
 		
 	 
-    
+    public void fechaingreso(){
+    	
+    }
     
 	
 	public void buscar (View v){

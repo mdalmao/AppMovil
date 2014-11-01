@@ -150,10 +150,15 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 				}
 				
 				if(tipoSearch.equals("Tema")){
-					Log.e("DATOS","entro a la igualdad clave");
+					Log.e("DATOS","entro a la igualdad tema");
 					selectQuery = "SELECT * FROM temas WHERE pregunta LIKE '%" + textSearch + "%' OR titulo LIKE '%" + textSearch + "%' "; 
 					//selectQuery = "SELECT * FROM temas WHERE pregunta LIKE '%" + textSearch + "%'";
 				}												 
+				
+				if(tipoSearch.equals("Fecha")){
+					Log.e("DATOS","entro a la igualdad Fecha");
+					selectQuery = "SELECT * FROM temas WHERE fecha LIKE '%" + textSearch + "%'"; 					
+				}
 				
 				if(selectQuery.isEmpty())
 				{
@@ -249,6 +254,13 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 				return texto;
 			}
 			
+			
+			
+			
+			
+			
+			
+			
 			//Integer id_respuesta, Integer id_tema,String respuesta, String fecha, Float X, Float Y, String nombreusuario, String email
 			public static ArrayList<Respuesta> getAllRespuestas(Integer id_tema) {
 				ArrayList<Respuesta> wordList; 
@@ -306,7 +318,7 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 					if (cursor.moveToFirst()) {
 						do { 
 					   if ( cursor.getInt(0) == id+1){
-						    texto= "Creador de " +  cursor.getString(1) + " es " + cursor.getString(5) ;
+						    texto= "Creador de " +  cursor.getString(1) + " es " + cursor.getString(5)+ " Fecha" + cursor.getString(3)  ;
 					    }
 						}while (cursor.moveToNext()); 
 						} // return respuesta list return wordList; }
