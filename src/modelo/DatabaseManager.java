@@ -177,7 +177,6 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 												
 			}
 			
-<<<<<<< HEAD
 			public static String pregunta( Integer id_tema){
 				String texto="";
                 String selectQuery = "SELECT * FROM temas WHERE " + CN_ID + " = " + id_tema ; 
@@ -207,8 +206,6 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 				}
 				return texto;
 			}
-=======
->>>>>>> a597549223479e3951a85a89c5c668e2f945ba53
 			
 			//Integer id_respuesta, Integer id_tema,String respuesta, String fecha, Float X, Float Y, String nombreusuario, String email
 			public static ArrayList<Respuesta> getAllRespuestas(Integer id_tema) {

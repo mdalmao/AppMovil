@@ -1,6 +1,11 @@
 package com.example.stackoverflow;
 
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import modelo.DBHelper;
 import modelo.DatabaseManager;
 import android.app.Activity;
@@ -57,7 +62,14 @@ public class Temanuevo extends Activity {
         Log.v("hi", "table created");
         database.beginTransaction();
         String estado ="1";
-        String fecha="2014-01-01";
+        Calendar cal = new GregorianCalendar();
+        Date date = (Date) cal.getTime();
+        Log.v("DATOS",""+ date);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Log.v("DATOS",""+ df);
+        String formatteDate = df.format(date);
+         //String fecha="2014-01-01";
+        String fecha = formatteDate;
         database.execSQL("INSERT INTO temas(titulo,pregunta, nombreusuario, email, fecha, estado) VALUES ('"+titulo.getText().toString()+"','"+pregunta.getText().toString()+"','"+nombreusuario.getText().toString()+"','"+email.getText().toString()+"','"+fecha+"','"+estado+"');");
         database.setTransactionSuccessful();
         database.endTransaction();
