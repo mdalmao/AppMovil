@@ -3,6 +3,8 @@ package com.example.stackoverflow;
 import java.util.ArrayList;
 
 import modelo.DatabaseManager;
+import modelo.Respuesta;
+import modelo.RespuestaAdapter;
 import modelo.TemaAdapter;
 import modelo.Temas;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -28,9 +31,11 @@ public class TemaBuscar extends Activity {
 	
 
 	public ArrayList<Temas> listTemas = new ArrayList<Temas>();
+	public ArrayList<Respuesta> listTemas2 = new ArrayList<Respuesta>();
 	private Spinner spinner;
 	private Button btnBuscar;
 	ListView temasListView;
+	EditText busqueda;
 	
 	
 	@Override
@@ -38,6 +43,8 @@ public class TemaBuscar extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tema_buscar);	
 		temasListView =(ListView) findViewById(R.id.listbuscar);
+		busqueda=(EditText)findViewById(R.id.editText1);
+		spinner = (Spinner) findViewById(R.id.spbusqueda);
 		
 		spinner = (Spinner) findViewById(R.id.spbusqueda);
 		//Creamos el adaptador
@@ -63,12 +70,12 @@ public class TemaBuscar extends Activity {
     
 	
 	public void buscar (View v){
-		Toast.makeText(TemaBuscar.this,
-                "On Button Click : " + 
-                "\n" + String.valueOf(spinner.getSelectedItem()) ,
-                Toast.LENGTH_LONG).show();
+		temasListView.setAdapter(null);
+		String textobusqueda= null;
 		
 		 TemaAdapter adapter;
+		 RespuestaAdapter adapter2;
+		 
 		    DatabaseManager.db = openOrCreateDatabase("tarea", SQLiteDatabase.OPEN_READWRITE, null);
 			try {
 	            DatabaseManager.db.execSQL("SELECT * FROM temas");
@@ -83,45 +90,100 @@ public class TemaBuscar extends Activity {
 	            DatabaseManager.db.setTransactionSuccessful();
 	            DatabaseManager.db.endTransaction();    
 	        }
-			Log.e("DATOS",String.valueOf(spinner.getSelectedItem()));
 			
-		    listTemas= DatabaseManager.BuscarPalabra("vane",String.valueOf(spinner.getSelectedItem()));
-		   
-		    if (listTemas.size()>= 1){
-		     Log.e("DATOS","Entro");
-		     adapter = new TemaAdapter(this, listTemas);
-		     
-		     temasListView.setAdapter(adapter);
-		     temasListView.setClickable(true);
-			 temasListView.setOnItemClickListener(ListClickListener);
-			 
-			 temasListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-				    @Override
-				    public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
-				        return onLongListItemClick(v,pos,id);
+			
+			if(busqueda.getText().toString().isEmpty()){
+				textobusqueda = null;
+			}
+			else{	
+				textobusqueda = String.valueOf(spinner.getSelectedItem());
+				
+				if(!textobusqueda.equals("Respuesta")){
+						Log.e("DATOS","entre a los otros");
+				    listTemas= DatabaseManager.BuscarPalabra(busqueda.getText().toString(),String.valueOf(spinner.getSelectedItem()));
+				    
+	
+				    if (listTemas.size()>= 1){
+					     Log.e("DATOS","Entro");
+					     adapter = new TemaAdapter(this, listTemas);
+					     
+					     temasListView.setAdapter(adapter);
+					     temasListView.setClickable(true);
+						 temasListView.setOnItemClickListener(ListClickListener);
+						 
+						 temasListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() 
+						 {
+							    @Override
+							    public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
+							        return onLongListItemClick(v,pos,id);
+							    }
+			
+								private boolean onLongListItemClick(View v, int pos, long id) {
+									 Log.i("DATOS", "onLongListItemClick id=" + id);
+									 String texto= DatabaseManager.getInfoTema(id);
+									 Toast toast = Toast.makeText(getApplicationContext(), "DATOS" + texto, Toast.LENGTH_SHORT);
+								     View textView = toast.getView();
+								     LinearLayout lay = new LinearLayout(getApplicationContext());
+								      lay.setOrientation(LinearLayout.HORIZONTAL);
+								      lay.setMinimumWidth(400);
+								    //  ImageView view = new ImageView(getApplicationContext());
+								     // view.setImageResource(android.R.drawable.ic_menu_info_details);
+								      //lay.addView(view);
+								      
+								      lay.addView(textView);
+								      toast.setView(lay);
+								      toast.show();	
+									    return true;
+			
+								}
+						  });
+		
 				    }
-
-					private boolean onLongListItemClick(View v, int pos, long id) {
-						 Log.i("DATOS", "onLongListItemClick id=" + id);
-						 String texto= DatabaseManager.getInfoTema(id);
-						 Toast toast = Toast.makeText(getApplicationContext(), "DATOS" + texto, Toast.LENGTH_SHORT);
-					     View textView = toast.getView();
-					     LinearLayout lay = new LinearLayout(getApplicationContext());
-					      lay.setOrientation(LinearLayout.HORIZONTAL);
-					      lay.setMinimumWidth(400);
-					    //  ImageView view = new ImageView(getApplicationContext());
-					     // view.setImageResource(android.R.drawable.ic_menu_info_details);
-					      //lay.addView(view);
-					      
-					      lay.addView(textView);
-					      toast.setView(lay);
-					      toast.show();	
-						    return true;
-
-					}
-				});
-
-		}
+			    
+				}
+				
+				if(textobusqueda.equals("Respuesta")){
+					
+					Log.e("DATOS","entre a respuesta");
+				    listTemas2= DatabaseManager.BuscarRespuesta(busqueda.getText().toString(),String.valueOf(spinner.getSelectedItem()));
+				    
+				    if (listTemas2.size()>= 1){
+					     Log.e("DATOS","Entro");
+					     adapter2 = new RespuestaAdapter(this, listTemas2);
+					     
+					     temasListView.setAdapter(adapter2);
+					     temasListView.setClickable(true);
+						 temasListView.setOnItemClickListener(ListClickListener);
+						 
+						 temasListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() 
+						 {
+							    @Override
+							    public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
+							        return onLongListItemClick(v,pos,id);
+							    }
+			
+								private boolean onLongListItemClick(View v, int pos, long id) {
+									 Log.i("DATOS", "onLongListItemClick id=" + id);
+									 String texto= DatabaseManager.getInfoTema(id);
+									 Toast toast = Toast.makeText(getApplicationContext(), "DATOS" + texto, Toast.LENGTH_SHORT);
+								     View textView = toast.getView();
+								     LinearLayout lay = new LinearLayout(getApplicationContext());
+								      lay.setOrientation(LinearLayout.HORIZONTAL);
+								      lay.setMinimumWidth(400);								  
+								      
+								      lay.addView(textView);
+								      toast.setView(lay);
+								      toast.show();	
+									    return true;
+			
+								}
+						  });
+		
+				    }
+				}
+				
+				
+		    }
 		
     }
 	

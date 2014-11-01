@@ -141,13 +141,56 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 				ArrayList<Temas> wordList; 
 				wordList = new ArrayList<Temas>();
 				
-			
+				String selectQuery= null;
+				
 				if(tipoSearch.equals("Usuario")){
-					Log.e("DATOS","entro a la igualdad");
+					Log.e("DATOS","entro a la igualdad de Usuario ");
 					tipoSearch = "nombreusuario";
+					selectQuery = "SELECT * FROM temas WHERE " + tipoSearch + " LIKE '%" + textSearch + "%'"; 									
 				}
 				
-				String selectQuery = "SELECT * FROM temas WHERE " + tipoSearch + " LIKE '%" + textSearch + "%'"; 
+				if(tipoSearch.equals("Tema")){
+					Log.e("DATOS","entro a la igualdad clave");
+					selectQuery = "SELECT * FROM temas WHERE pregunta LIKE '%" + textSearch + "%' OR titulo LIKE '%" + textSearch + "%' "; 
+					//selectQuery = "SELECT * FROM temas WHERE pregunta LIKE '%" + textSearch + "%'";
+				}												 
+				
+				if(selectQuery.isEmpty())
+				{
+					return null;
+				}
+				else
+				{
+					Cursor cursor = db.rawQuery(selectQuery, null); 
+					if(cursor !=null && cursor.getCount()>0){
+						Log.e("DATOS","entro al cursor");
+						 if (cursor.moveToFirst()) {
+								do { 
+							    Temas map = new Temas(); 
+								//map.seput(CN_ID, cursor.getString(0));
+							    map.setId_tema(cursor.getInt(0));
+								map.setTitulo(cursor.getString(1));
+								map.setPregunta(cursor.getString(2));
+								map.setFecha(cursor.getString(3));
+								map.setEstado(cursor.getString(4));
+								map.setNombreusuario(cursor.getString(5));
+								map.setEmail( cursor.getString(6));
+								wordList.add(map);
+								}while (cursor.moveToNext()); 
+								} 
+					}											
+						return wordList;
+					
+				}								
+			}
+			
+			public static ArrayList<Respuesta> BuscarRespuesta(String textSearch, String tipoSearch){
+				ArrayList<Respuesta> wordList; 
+				wordList = new ArrayList<Respuesta>();
+			
+				String selectQuery= null;									
+				
+				selectQuery = "SELECT * FROM respuesta WHERE Respuesta LIKE '%" + textSearch + "%'"; 				 
 				
 				if(selectQuery.isEmpty())
 				{
@@ -158,23 +201,22 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 					Cursor cursor = db.rawQuery(selectQuery, null); 
 					 if (cursor.moveToFirst()) {
 							do { 
-						    Temas map = new Temas(); 
+						    Respuesta map = new Respuesta(); 
 							//map.seput(CN_ID, cursor.getString(0));
-						    map.setId_tema(cursor.getInt(0));
-							map.setTitulo(cursor.getString(1));
-							map.setPregunta(cursor.getString(2));
+						    map.setId_respuesta(cursor.getInt(0));
+							map.setId_Tema(cursor.getInt(1));
+							map.setRespuesta(cursor.getString(2));
 							map.setFecha(cursor.getString(3));
-							map.setEstado(cursor.getString(4));
-							map.setNombreusuario(cursor.getString(5));
+							map.setX(cursor.getFloat(4));
+							map.setY(cursor.getFloat(5));
+							map.setNombreUsuario( cursor.getString(6));
 							map.setEmail( cursor.getString(6));
 							wordList.add(map);
 							}while (cursor.moveToNext()); 
-							} // return temas list return wordList; }
-					Log.e("DATOS_rEC","RECUPERA "+wordList.get(0).getId_tema());								
+							} // return temas list return wordList; }											
 					return wordList;
 				}
-				
-												
+											
 			}
 			
 			public static String pregunta( Integer id_tema){

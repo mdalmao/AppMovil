@@ -24,6 +24,18 @@ public class Respuesta {
 	                   
 	    }
 	    
+	    public Respuesta() {
+			super();
+			this.setEmail("");
+			this.setFecha("");
+			this.setId_respuesta(0);
+			this.setId_Tema(0);
+			this.setNombreUsuario("");
+			this.setRespuesta("");
+			this.setX((float) 0);
+			this.setY((float) 0);
+	    }
+	    
 		public Integer getId_respuesta() {
 			return id_respuesta;
 		}

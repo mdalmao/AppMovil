@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="TipoBusqueda">
-        <item>Usuario</item>
-        <item>Palabra clave</item>
+         <item>Usuario</item>
+        <item>Tema</item>
+        <item>Respuesta</item>
         <item>Fecha</item>
     </string-array>
 </resources>

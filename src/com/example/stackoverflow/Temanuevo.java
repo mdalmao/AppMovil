@@ -62,14 +62,14 @@ public class Temanuevo extends Activity {
         Log.v("hi", "table created");
         database.beginTransaction();
         String estado ="1";
-        Calendar cal = new GregorianCalendar();
-        Date date = (Date) cal.getTime();
-        Log.v("DATOS",""+ date);
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Log.v("DATOS",""+ df);
-        String formatteDate = df.format(date);
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int mes = c.get(Calendar.MONTH);
+        int dia = c.get(Calendar.DAY_OF_MONTH);
+        Log.v("hi", "PASO");
          //String fecha="2014-01-01";
-        String fecha = formatteDate;
+        String fecha = year + "-" + mes + "-" + dia;
+        Log.v("hi", "FECHA" +fecha);
         database.execSQL("INSERT INTO temas(titulo,pregunta, nombreusuario, email, fecha, estado) VALUES ('"+titulo.getText().toString()+"','"+pregunta.getText().toString()+"','"+nombreusuario.getText().toString()+"','"+email.getText().toString()+"','"+fecha+"','"+estado+"');");
         database.setTransactionSuccessful();
         database.endTransaction();
@@ -79,9 +79,7 @@ public class Temanuevo extends Activity {
         Toast toast1 = Toast.makeText(this, "Gracias por Crear un tema", Toast.LENGTH_SHORT);
         toast1.show();
         this.pd.dismiss();
-        volver(v);
-        
-		
+        volver(v);                	
     }
 	
 }
