@@ -132,34 +132,49 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 					wordList.add(map);
 					}while (cursor.moveToNext()); 
 					} // return temas list return wordList; }
-				Log.e("DATOS_rEC","RECUPERA "+wordList.get(0).getId_tema());
+				Log.e("DATOS_rEC","RECUPERA miraaaa "+wordList.get(0).getId_tema());
 				return wordList;
 			}
 			
 			
-			public static ArrayList<Temas> BuscarPalabra(String textSearch){
+			public static ArrayList<Temas> BuscarPalabra(String textSearch, String tipoSearch){
 				ArrayList<Temas> wordList; 
 				wordList = new ArrayList<Temas>();
 				
-				String selectQuery = "SELECT * FROM temas WHERE NombreUsuario LIKE '%textSearch%'"; 
+			
+				if(tipoSearch.equals("Usuario")){
+					Log.e("DATOS","entro a la igualdad");
+					tipoSearch = "nombreusuario";
+				}
 				
-				Cursor cursor = db.rawQuery(selectQuery, null); 
-				 if (cursor.moveToFirst()) {
-						do { 
-					    Temas map = new Temas(); 
-						//map.seput(CN_ID, cursor.getString(0));
-					    map.setId_tema(cursor.getInt(0));
-						map.setTitulo(cursor.getString(1));
-						map.setPregunta(cursor.getString(2));
-						map.setFecha(cursor.getString(3));
-						map.setEstado(cursor.getString(4));
-						map.setNombreusuario(cursor.getString(5));
-						map.setEmail( cursor.getString(6));
-						wordList.add(map);
-						}while (cursor.moveToNext()); 
-						} // return temas list return wordList; }
-				Log.e("DATOS_rEC","RECUPERA "+wordList.get(0).getId_tema());								
-				return wordList;								
+				String selectQuery = "SELECT * FROM temas WHERE " + tipoSearch + " LIKE '%" + textSearch + "%'"; 
+				
+				if(selectQuery.isEmpty())
+				{
+					return null;
+				}
+				else
+				{
+					Cursor cursor = db.rawQuery(selectQuery, null); 
+					 if (cursor.moveToFirst()) {
+							do { 
+						    Temas map = new Temas(); 
+							//map.seput(CN_ID, cursor.getString(0));
+						    map.setId_tema(cursor.getInt(0));
+							map.setTitulo(cursor.getString(1));
+							map.setPregunta(cursor.getString(2));
+							map.setFecha(cursor.getString(3));
+							map.setEstado(cursor.getString(4));
+							map.setNombreusuario(cursor.getString(5));
+							map.setEmail( cursor.getString(6));
+							wordList.add(map);
+							}while (cursor.moveToNext()); 
+							} // return temas list return wordList; }
+					Log.e("DATOS_rEC","RECUPERA "+wordList.get(0).getId_tema());								
+					return wordList;
+				}
+				
+												
 			}
 			
 			

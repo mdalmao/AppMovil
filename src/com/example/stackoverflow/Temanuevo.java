@@ -48,7 +48,8 @@ public class Temanuevo extends Activity {
 	
 	public void guardar (View v){
 		Log.e("DATOS", "eNTRO");	
-	
+		this.pd = ProgressDialog.show(this, "Ingresando Tema",
+				  "Guardando Tema", true);
         SQLiteDatabase database;
 		String DB_NAME = "tarea";
 		database=openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
@@ -63,11 +64,10 @@ public class Temanuevo extends Activity {
 		
         Log.e("DATOS", "titulo: " + titulo.getText().toString() + " pregunta: " +  pregunta.getText().toString());	
 		
-        Toast toast1 = Toast.makeText(getApplicationContext(), "Gracias por Crear un tema", Toast.LENGTH_SHORT);
+        Toast toast1 = Toast.makeText(this, "Gracias por Crear un tema", Toast.LENGTH_SHORT);
         toast1.show();
         this.pd.dismiss();
         volver(v);
-        
         
 		
     }

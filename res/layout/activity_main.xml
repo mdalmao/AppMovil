@@ -57,7 +57,7 @@
     </TableLayout>
 
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/listbuscar"
         android:layout_width="299dp"
         android:layout_height="362dp"
         android:layout_marginLeft="-300sp"

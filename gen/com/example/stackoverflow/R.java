@@ -40,7 +40,7 @@ public final class R {
         public static final int botoninfo=0x7f0a0008;
         public static final int botonnuevo=0x7f0a0007;
         public static final int btnBuscar=0x7f0a000c;
-        public static final int editText1=0x7f0a000a;
+        public static final int editText1=0x7f0a000b;
         public static final int id_temaTtitulo=0x7f0a0024;
         public static final int idtema=0x7f0a0000;
         public static final int info1=0x7f0a000e;
@@ -50,10 +50,10 @@ public final class R {
         public static final int integrante3=0x7f0a0013;
         public static final int latitud=0x7f0a001b;
         public static final int linearLayout1=0x7f0a0003;
-        public static final int list=0x7f0a0004;
+        public static final int listbuscar=0x7f0a0004;
         public static final int longitud=0x7f0a001c;
         public static final int responder=0x7f0a0005;
-        public static final int spbusqueda=0x7f0a000b;
+        public static final int spbusqueda=0x7f0a000a;
         public static final int tableRow1=0x7f0a0006;
         public static final int tableRow2=0x7f0a0025;
         public static final int tableRow3=0x7f0a001d;

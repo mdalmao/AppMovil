@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.stackoverflow.R;
@@ -16,11 +17,14 @@ import android.widget.TextView;
 public class TemaAdapter extends BaseAdapter implements OnClickListener {
 	    private Context context;
 	    private List<Temas> listTema;
-
+	   
+	  
+	    
 	    public TemaAdapter(Context context, List<Temas> listTema) {
 	    	 this.context = context;
 	         this.listTema = listTema;
 		}
+
 
 		public int getCount() {
 	        return listTema.size();

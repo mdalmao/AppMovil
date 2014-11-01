@@ -33,9 +33,18 @@
         android:id="@+id/btnBuscar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editText1"
         android:layout_alignBottom="@+id/editText1"
-        android:layout_alignRight="@+id/spbusqueda"
+        android:layout_alignParentRight="true"
+        android:onClick="buscar"
         android:text="Buscar" />
+
+    <ListView
+        android:id="@+id/listbuscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/editText1" >
+
+    </ListView>
 
 </RelativeLayout>

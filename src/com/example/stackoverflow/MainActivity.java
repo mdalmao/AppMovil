@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-	    temasListView =(ListView) findViewById(R.id.list);
+	    temasListView =(ListView) findViewById(R.id.listbuscar);
 	    
 	    TemaAdapter adapter;
 	    DatabaseManager.db = openOrCreateDatabase("tarea", SQLiteDatabase.OPEN_READWRITE, null);

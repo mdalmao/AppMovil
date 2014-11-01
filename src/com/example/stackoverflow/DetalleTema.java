@@ -32,7 +32,7 @@ public class DetalleTema extends Activity {
 		titulo.setText(titulotext);
 		idtema.setText(idtematexto);
 		
-		ListView respuestaListView = (ListView) findViewById(R.id.list);
+		ListView respuestaListView = (ListView) findViewById(R.id.listbuscar);
 	    
 	    RespuestaAdapter adapter;
 	    DatabaseManager.db = openOrCreateDatabase("tarea", SQLiteDatabase.OPEN_READWRITE, null);
