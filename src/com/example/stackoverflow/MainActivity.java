@@ -7,19 +7,25 @@ import modelo.Temas;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -42,8 +48,11 @@ public class MainActivity extends Activity {
 	    TemaAdapter adapter;
 	    DatabaseManager.db = openOrCreateDatabase("tarea", SQLiteDatabase.OPEN_READWRITE, null);
 		try {
-            DatabaseManager.db.execSQL("SELECT * FROM temas");
+            //DatabaseManager.db.execSQL("SELECT * FROM temas");
+            String selectQuery = "SELECT * FROM temas "; 
+			Cursor cursor = DatabaseManager.db.rawQuery(selectQuery, null);
         } catch (SQLiteException xp) {
+        	Log.e("ERROR", "Error en tema"+ xp);
         	//Sino existe creo la tabla y le agrego un tema
         	DatabaseManager.db.execSQL(DatabaseManager.CREATE_TABLE2);
     	    Log.v("hi", "table created");
@@ -76,17 +85,18 @@ public class MainActivity extends Activity {
 					 Toast toast = Toast.makeText(getApplicationContext(), "DATOS" + texto, Toast.LENGTH_SHORT);
 				     View textView = toast.getView();
 				     LinearLayout lay = new LinearLayout(getApplicationContext());
-				      lay.setOrientation(LinearLayout.HORIZONTAL);
-				      lay.setMinimumWidth(400);
+				     lay.setOrientation(LinearLayout.HORIZONTAL);
+				     lay.setMinimumWidth(400);
 				    //  ImageView view = new ImageView(getApplicationContext());
 				     // view.setImageResource(android.R.drawable.ic_menu_info_details);
 				      //lay.addView(view);
 				      
-				      lay.addView(textView);
-				      toast.setView(lay);
-				      toast.show();	
-					    return true;
-
+				     lay.addView(textView);
+				     toast.setView(lay);
+				     toast.show();	
+					 return true;
+					 
+					
 				}
 			});
 

@@ -3,12 +3,15 @@ package com.example.stackoverflow;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+import android.net.NetworkInfo;
+
 
 
 import modelo.DatabaseManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
@@ -90,23 +93,41 @@ public class TemaRespuesta extends Activity {
         Toast toast1 = Toast.makeText(getApplicationContext(), "Gracias por responder en este tema", Toast.LENGTH_SHORT);
         toast1.show();
         this.pd.dismiss();
-        enviarmail();
-      
-        /*
-        String[] to = { "mdalmaouy@gmail.com", "marcelo_dalmao@hotmail.com" };
-        String[] cc = { "mdalmao@sisinfo.com.uy" };
-        enviar(to, cc, "Hola","Esto es un email enviado desde una app de Android");
-        */
+        if(isInternetOn()){
+           enviarmail();
+           /*
+           String[] to = { "mdalmaouy@gmail.com", "marcelo_dalmao@hotmail.com" };
+           String[] cc = { "mdalmao@sisinfo.com.uy" };
+           enviar(to, cc, "Hola","Esto es un email enviado desde una app de Android");
+           */
+        }
+        
         volver(v);
         
 		
     }
+	
+	public final boolean isInternetOn() {
+		try {  
+    	 ConnectivityManager connec =  (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+    	 if ( connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED ||
+    	 connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTED ) {
+    	 return true;
+    	 } else if ( connec.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED ||  connec.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED  ) {
+    	 return false;
+    	 }
+		} catch (Exception e) {   
+			return false;
+		}
+		return false;
+    }
+	
 
 	public void enviarmail(){
 		/*try {   
-            GMailEnvio sender = new GMailEnvio("mdalmaouy@gmail.com", "clave");
+            GMailEnvio sender = new GMailEnvio("mdalmaouy@gmail.com", "pass.m0sca2");
             sender.sendMail("This is Subject", "This is Body", "mdalmaouy@gmail.com", "mdalmaouy@gmail.com");   
-            
+            Log.e("SendMail", "Se envio correctamente");
         } catch (Exception e) {   
             Log.e("SendMail", e.getMessage(), e);   
         } */
