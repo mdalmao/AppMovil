@@ -91,7 +91,7 @@ public class TemaBuscar extends Activity {
 		 TemaAdapter adapter;
 		 RespuestaAdapter adapter2;
 		 
-		    DatabaseManager.db = openOrCreateDatabase("tarea", SQLiteDatabase.OPEN_READWRITE, null);
+		   /* DatabaseManager.db = openOrCreateDatabase("tarea", SQLiteDatabase.OPEN_READWRITE, null);
 			try {
 	            DatabaseManager.db.execSQL("SELECT * FROM temas");
 	        } catch (SQLiteException xp) {
@@ -102,7 +102,7 @@ public class TemaBuscar extends Activity {
 	            DatabaseManager.db.execSQL("INSERT INTO temas(titulo,pregunta, nombreusuario, email, fecha, estado) VALUES ('Tema de Prueba','Le gusto el sistema?','mdalmao','mdalmaouy@gmail.com','22/10/2014','1');");
 	            DatabaseManager.db.setTransactionSuccessful();
 	            DatabaseManager.db.endTransaction();    
-	        }
+	        }*/
 			
 			
 			if(busqueda.getText().toString().isEmpty()){

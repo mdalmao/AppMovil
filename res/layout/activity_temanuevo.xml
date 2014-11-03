@@ -87,7 +87,7 @@
                 android:layout_height="34dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="100dp"
-                 android:onClick="volver"
+                 android:onClick="sendMessage"
                 android:src="@drawable/volver" />
 
         </TableRow>

@@ -25,9 +25,5 @@ public class TemaInfo extends Activity {
 		return true;
 	}
 	
-	public void info2 (View v){
-		Intent settingsActivity = new Intent(context, WebViewActivity.class);
-      	startActivity(settingsActivity);
-		 
-    }
+	
 }

@@ -3,16 +3,24 @@ package com.example.stackoverflow;
 
 
 import java.util.Calendar;
+
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 import modelo.DatabaseManager;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -76,6 +84,45 @@ public class Temanuevo extends Activity {
         toast1.show();
         this.pd.dismiss();
         volver(v);                	
+    }
+	
+	public void sendMessage(View view) {
+		Log.e("DATOS", "mensaje ");
+    	EditText editText = (EditText) findViewById(R.id.tema_titulo);
+    	String message = editText.getText().toString();    	    	
+    	
+    	
+    	new CallMashapeAsync().execute(message);
+    }
+	
+	
+	
+	private class CallMashapeAsync extends AsyncTask<String, Integer, HttpResponse<JsonNode>> {
+
+    	protected HttpResponse<JsonNode> doInBackground(String... msg) {
+
+    		HttpResponse<JsonNode> request = null;
+			try {
+				Log.e("DATOS", "mensaje2 ");
+				request = Unirest.get("https://pbouda-poio.p.mashape.com/prediction?iso=ssp&text=manos")
+						.header("X-Mashape-Key", "epQPu8u4BBmshhgLIUm7vp54G11sp13O00wjsnMF4zgR1JbsUM")
+						.asJson();
+			} catch (UnirestException e) {
+				
+				e.printStackTrace();
+			}
+    		
+    		return request;
+    	}    	
+    	protected void onProgressUpdate(Integer...integers) {
+    	}
+
+    	protected void onPostExecute(HttpResponse<JsonNode> response) {
+    		String answer = response.getBody().toString();
+    		Log.e("Datos",answer);
+        	//TextView txtView = (TextView) findViewById(R.id.textView1);
+        	//txtView.setText(answer);
+    	}
     }
 	
 }
