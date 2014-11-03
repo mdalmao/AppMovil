@@ -1,13 +1,17 @@
 package com.example.stackoverflow;
 
+
+import android.content.Context;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.webkit.WebView;
 
 public class TemaInfo extends Activity {
-
+	final Context context = this;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,8 +26,8 @@ public class TemaInfo extends Activity {
 	}
 	
 	public void info2 (View v){
-		WebView myWebView = (WebView) findViewById(R.id.webview);
-		myWebView.loadUrl("http://www.google.com");
+		Intent settingsActivity = new Intent(context, WebViewActivity.class);
+      	startActivity(settingsActivity);
 		 
     }
 }

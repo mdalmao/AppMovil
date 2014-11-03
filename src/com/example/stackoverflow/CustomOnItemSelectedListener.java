@@ -2,10 +2,7 @@ package com.example.stackoverflow;
 
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
  
 public class CustomOnItemSelectedListener implements OnItemSelectedListener {

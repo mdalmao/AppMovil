@@ -98,4 +98,13 @@
         android:textSize="@dimen/info2"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="info2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textView1"
+        android:text="Ver en Formato web" />
+
 </RelativeLayout>

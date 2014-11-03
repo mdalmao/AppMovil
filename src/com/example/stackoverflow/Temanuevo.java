@@ -1,12 +1,8 @@
 package com.example.stackoverflow;
 
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
-import modelo.DBHelper;
+import java.util.Calendar;
 import modelo.DatabaseManager;
 import android.app.Activity;
 import android.app.ProgressDialog;

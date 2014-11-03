@@ -2,6 +2,7 @@ package com.example.stackoverflow;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import android.net.NetworkInfo;
 
@@ -12,7 +13,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -29,6 +29,8 @@ import android.widget.Toast;
 public class TemaRespuesta extends Activity {
 
 	private TextView titulo,idtema,respuesta,usuario,email;
+	String idtematexto;
+	String titulotexto;
 	TextView et1, et2;
 	private ProgressDialog pd = null;
 	
@@ -37,8 +39,8 @@ public class TemaRespuesta extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tema_respuesta);
 		Bundle recibo = getIntent().getExtras();
-		String idtematexto = recibo.getString("idtema");
-		String titulotexto = recibo.getString("titulo");
+		idtematexto = recibo.getString("idtema");
+		titulotexto = recibo.getString("titulo");
 		
 		/* Use the LocationManager class to obtain GPS locations */
 	      LocationManager mlocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
@@ -66,10 +68,8 @@ public class TemaRespuesta extends Activity {
 	@SuppressLint("SimpleDateFormat")
 	public void guardar (View v){
 		this.pd = ProgressDialog.show(this, "Gaurdando", "Guardando Respuesta", true, false);
-		 
-		Log.e("DATOS", "Guardo Respuesta");	
-	
-        SQLiteDatabase database;
+	    Log.e("DATOS", "Guardo Respuesta");	
+	    SQLiteDatabase database;
 		String DB_NAME = "tarea";
 		database=openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
 		database.execSQL(DatabaseManager.CREATE_TABLE);
@@ -78,12 +78,14 @@ public class TemaRespuesta extends Activity {
         Date dt = new Date(0);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String fecha = df.format(dt);
-        
-     //   String fecha="2014-01-01";
-       // Float X = Float(et1.getText());
-       //  Float Y = (float) et1.getText() ;
-        Float X = Float.valueOf(et1.getText().toString());
-        Float Y = Float.valueOf(et2.getText().toString());
+        Float X =Float.valueOf("1");
+        Float Y= Float.valueOf("1");
+        try { 
+         X = Float.valueOf(et1.getText().toString());
+         Y = Float.valueOf(et2.getText().toString());
+        } catch (Exception e) {   
+            Log.e("SINGPS", e.getMessage(), e);   
+        }
               
        	Integer idtematexto = Integer.valueOf((String) idtema.getText()); 
     	Log.e("DATOS", "X"+ X + " Y" + Y ); 
@@ -94,14 +96,13 @@ public class TemaRespuesta extends Activity {
         toast1.show();
         this.pd.dismiss();
         if(isInternetOn()){
-           enviarmail();
+          enviarmail();
            /*
            String[] to = { "mdalmaouy@gmail.com", "marcelo_dalmao@hotmail.com" };
            String[] cc = { "mdalmao@sisinfo.com.uy" };
            enviar(to, cc, "Hola","Esto es un email enviado desde una app de Android");
            */
         }
-        
         volver(v);
         
 		
@@ -124,17 +125,25 @@ public class TemaRespuesta extends Activity {
 	
 
 	public void enviarmail(){
-		/*try {   
-            GMailEnvio sender = new GMailEnvio("mdalmaouy@gmail.com", "pass.m0sca2");
-            sender.sendMail("This is Subject", "This is Body", "mdalmaouy@gmail.com", "mdalmaouy@gmail.com");   
-            Log.e("SendMail", "Se envio correctamente");
+		try {   
+            GMailEnvio sender = new GMailEnvio("envioappmovil@gmail.com", "Sistemas2");
+            ArrayList<String> usuarios = DatabaseManager.getEmailRespuestas(Integer.valueOf(idtematexto));
+            for( String s : usuarios ){
+               try{
+               sender.sendMail("Respuesta al tema " + titulotexto , "Otro usuario comento el tema que tu respondiste", "envioappmovil@gmail.com", s);   
+               Log.e("MAIL", "Se envio correctamente a " + s );
+               } catch (Exception e) {   
+                   Log.e("MAIL", e.getMessage(), e);   
+               } 
+            }
+         
         } catch (Exception e) {   
-            Log.e("SendMail", e.getMessage(), e);   
-        } */
+            Log.e("MAIL", "Fallo al instanciar a GMAILEnvio" +e.getMessage(), e);   
+        } 
 
 	}
 	
-	
+	/*
 	private void enviar(String[] to, String[] cc,
 	        String asunto, String mensaje) {
 	        Intent emailIntent = new Intent(Intent.ACTION_SEND);
@@ -148,7 +157,7 @@ public class TemaRespuesta extends Activity {
 	        emailIntent.setType("message/rfc822");
 	        startActivity(Intent.createChooser(emailIntent, "Email "));
 	    }
-	
+	*/
 	public void volver (View v){
 		Intent act = new Intent(getBaseContext(), DetalleTema.class);
 		act.putExtra("idtema", idtema.getText());

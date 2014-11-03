@@ -9,11 +9,11 @@
         android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
+   <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -47,6 +47,10 @@
         <activity
             android:name="com.example.stackoverflow.DetalleTema"
             android:label="@string/title_activity_detalle_tema" >
+        </activity>
+        <activity
+            android:name="com.example.stackoverflow.WebViewActivity"
+            android:label="@string/title_activity_web_view" >
         </activity>
     </application>
 

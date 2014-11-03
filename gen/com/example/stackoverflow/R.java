@@ -33,47 +33,48 @@ public final class R {
     public static final class id {
         public static final int TextView01=0x7f0a0013;
         public static final int TextView03=0x7f0a0016;
-        public static final int action_settings=0x7f0a002a;
-        public static final int botonGuardar=0x7f0a001f;
-        public static final int botonVolver=0x7f0a0020;
+        public static final int action_settings=0x7f0a002b;
+        public static final int botonGuardar=0x7f0a0020;
+        public static final int botonVolver=0x7f0a0021;
         public static final int botonbuscar=0x7f0a000b;
         public static final int botoninfo=0x7f0a000a;
         public static final int botonnuevo=0x7f0a0009;
         public static final int btnBuscar=0x7f0a000e;
+        public static final int button1=0x7f0a0017;
         public static final int editText1=0x7f0a000d;
-        public static final int id_temaTtitulo=0x7f0a0025;
+        public static final int id_temaTtitulo=0x7f0a0026;
         public static final int idtema=0x7f0a0000;
         public static final int info1=0x7f0a0010;
         public static final int info2=0x7f0a000f;
         public static final int info3=0x7f0a0011;
         public static final int integrante2=0x7f0a0014;
         public static final int integrante3=0x7f0a0015;
-        public static final int latitud=0x7f0a001c;
+        public static final int latitud=0x7f0a001d;
         public static final int linearLayout1=0x7f0a0005;
         public static final int listbuscar=0x7f0a0006;
-        public static final int longitud=0x7f0a001d;
+        public static final int longitud=0x7f0a001e;
         public static final int pregunta=0x7f0a0004;
         public static final int responder=0x7f0a0007;
         public static final int spbusqueda=0x7f0a000c;
         public static final int tableRow1=0x7f0a0008;
-        public static final int tableRow2=0x7f0a0026;
-        public static final int tableRow3=0x7f0a001e;
-        public static final int tableRow4=0x7f0a0028;
-        public static final int tema_Titulo=0x7f0a0017;
-        public static final int tema_email=0x7f0a001b;
-        public static final int tema_pregunta=0x7f0a0023;
-        public static final int tema_respuesta=0x7f0a0019;
-        public static final int tema_titulo=0x7f0a0021;
-        public static final int tema_usuario=0x7f0a0022;
-        public static final int tena_usuario=0x7f0a0018;
+        public static final int tableRow2=0x7f0a0027;
+        public static final int tableRow3=0x7f0a001f;
+        public static final int tableRow4=0x7f0a0029;
+        public static final int tema_Titulo=0x7f0a0018;
+        public static final int tema_email=0x7f0a001c;
+        public static final int tema_pregunta=0x7f0a0024;
+        public static final int tema_respuesta=0x7f0a001a;
+        public static final int tema_titulo=0x7f0a0022;
+        public static final int tema_usuario=0x7f0a0023;
+        public static final int tena_usuario=0x7f0a0019;
         public static final int textView1=0x7f0a0001;
         public static final int textView3=0x7f0a0003;
-        public static final int textView4=0x7f0a001a;
+        public static final int textView4=0x7f0a001b;
         public static final int titulo=0x7f0a0002;
         public static final int txtIntegrantes=0x7f0a0012;
-        public static final int txtRespuesta=0x7f0a0024;
-        public static final int txtTtitulo=0x7f0a0027;
-        public static final int webview=0x7f0a0029;
+        public static final int txtRespuesta=0x7f0a0025;
+        public static final int txtTtitulo=0x7f0a0028;
+        public static final int webView1=0x7f0a002a;
     }
     public static final class integer {
         public static final int pp=0x7f060000;
@@ -97,6 +98,7 @@ public final class R {
         public static final int tema_respuesta=0x7f090004;
         public static final int temanuevo=0x7f090005;
         public static final int temas_row=0x7f090006;
+        public static final int web_view=0x7f090007;
     }
     public static final class string {
         public static final int Titulo_pregunta=0x7f07000e;
@@ -122,6 +124,7 @@ public final class R {
         public static final int title_activity_tema_respuesta=0x7f070006;
         public static final int title_activity_temanuevo=0x7f070003;
         public static final int title_activity_temas_row=0x7f070016;
+        public static final int title_activity_web_view=0x7f07001a;
         public static final int titulo=0x7f070007;
         public static final int titulo2=0x7f070015;
         public static final int usuario=0x7f07000b;

@@ -15,10 +15,9 @@ import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
+
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -33,7 +32,7 @@ public class TemaBuscar extends Activity {
 	public ArrayList<Temas> listTemas = new ArrayList<Temas>();
 	public ArrayList<Respuesta> listTemas2 = new ArrayList<Respuesta>();
 	private Spinner spinner;
-	private Button btnBuscar;
+//	private Button btnBuscar;
 	ListView temasListView;
 	EditText busqueda;
 	
@@ -100,8 +99,6 @@ public class TemaBuscar extends Activity {
 	        	DatabaseManager.db.execSQL(DatabaseManager.CREATE_TABLE2);
 	    	    Log.v("hi", "table created");
 	    	    DatabaseManager.db.beginTransaction();
-	            String estado ="1";
-	            String fecha="2014-01-01";
 	            DatabaseManager.db.execSQL("INSERT INTO temas(titulo,pregunta, nombreusuario, email, fecha, estado) VALUES ('Tema de Prueba','Le gusto el sistema?','mdalmao','mdalmaouy@gmail.com','22/10/2014','1');");
 	            DatabaseManager.db.setTransactionSuccessful();
 	            DatabaseManager.db.endTransaction();    

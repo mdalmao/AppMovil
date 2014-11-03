@@ -1,8 +1,6 @@
 package modelo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -215,7 +213,7 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 							map.setX(cursor.getFloat(4));
 							map.setY(cursor.getFloat(5));
 							map.setNombreUsuario( cursor.getString(6));
-							map.setEmail( cursor.getString(6));
+							map.setEmail( cursor.getString(7));
 							wordList.add(map);
 							}while (cursor.moveToNext()); 
 							} // return temas list return wordList; }											
@@ -278,24 +276,7 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 				return wordList;
 			}
 
-			//Integer id_respuesta, Integer id_tema,String respuesta, String fecha, Float X, Float Y, String nombreusuario, String email
-			public static ArrayList<Respuesta> NotificacionMail(Integer id_tema) {
-				ArrayList<Respuesta> wordList; 
-				wordList = new ArrayList<Respuesta>();
-				String selectQuery = "SELECT * FROM respuesta "; 
-				Cursor cursor = db.rawQuery(selectQuery, null);
-				if (cursor.moveToFirst()) {
-					do { 
-				    if ( cursor.getInt(1) == id_tema){
-						//Respuesta map = new Respuesta(cursor.getInt(0),cursor.getInt(1), cursor.getString(2),  cursor.getString(3), cursor.getFloat(4),  cursor.getFloat(5),  cursor.getString(6),  cursor.getString(7)); 
-					   // wordList.add(map);
-				    	String email = cursor.getString(7);
-				    	
-				    }
-					}while (cursor.moveToNext()); 
-					} // return respuesta list return wordList; }
-				return wordList;
-			}
+			
 		
 
 
@@ -326,6 +307,22 @@ public class DatabaseManager  extends SQLiteOpenHelper {
 				
 				return texto;
 				
+			}
+			
+			public static ArrayList<String> getEmailRespuestas(Integer id_tema) {
+				ArrayList<String> wordList; 
+				wordList = new ArrayList<String>();
+				
+			 String selectQuery = "SELECT * FROM respuesta WHERE " + CN_TEMA + " = " + id_tema ; 
+			   
+			 Cursor cursor = db.rawQuery(selectQuery, null); 
+			 if (cursor.moveToFirst()) {
+					do { 
+				     wordList.add(cursor.getString(7));
+					}while (cursor.moveToNext()); 
+					} // return todos los mails de las personas que participaron del tmeatemas list return wordList; }
+			
+				return wordList;
 			}
 			
 	}

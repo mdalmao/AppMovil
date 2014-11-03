@@ -57,8 +57,6 @@ public class MainActivity extends Activity {
         	DatabaseManager.db.execSQL(DatabaseManager.CREATE_TABLE2);
     	    Log.v("hi", "table created");
     	    DatabaseManager.db.beginTransaction();
-            String estado ="1";
-            String fecha="2014-01-01";
             DatabaseManager.db.execSQL("INSERT INTO temas(titulo,pregunta, nombreusuario, email, fecha, estado) VALUES ('Tema de Prueba','Le gusto el sistema?','mdalmao','mdalmaouy@gmail.com','22/10/2014','1');");
             DatabaseManager.db.setTransactionSuccessful();
             DatabaseManager.db.endTransaction();    
