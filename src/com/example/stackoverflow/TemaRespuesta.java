@@ -4,22 +4,22 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import android.net.NetworkInfo;
 
 
-
+import mails.BackgroundMail;
 import modelo.DatabaseManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -32,6 +32,7 @@ public class TemaRespuesta extends Activity {
 	String idtematexto;
 	String titulotexto;
 	TextView et1, et2;
+	Context context;
 	private ProgressDialog pd = null;
 	
 	@Override
@@ -41,7 +42,7 @@ public class TemaRespuesta extends Activity {
 		Bundle recibo = getIntent().getExtras();
 		idtematexto = recibo.getString("idtema");
 		titulotexto = recibo.getString("titulo");
-		
+		context=this;
 		/* Use the LocationManager class to obtain GPS locations */
 	      LocationManager mlocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 
@@ -92,17 +93,12 @@ public class TemaRespuesta extends Activity {
     	database.execSQL("INSERT INTO respuesta(Id_Tema,Respuesta, Fecha, X, Y, NombreUsuario, Email) VALUES ("+idtematexto+",'"+respuesta.getText().toString()+"','"+fecha+"',"+X+","+Y+",'"+usuario.getText().toString()+"','"+email.getText().toString()+"');");
         database.setTransactionSuccessful();
         database.endTransaction();
+        if(isInternetOn()){
+          enviarmail();
+        }
         Toast toast1 = Toast.makeText(getApplicationContext(), "Gracias por responder en este tema", Toast.LENGTH_SHORT);
         toast1.show();
         this.pd.dismiss();
-        if(isInternetOn()){
-          enviarmail();
-           /*
-           String[] to = { "mdalmaouy@gmail.com", "marcelo_dalmao@hotmail.com" };
-           String[] cc = { "mdalmao@sisinfo.com.uy" };
-           enviar(to, cc, "Hola","Esto es un email enviado desde una app de Android");
-           */
-        }
         volver(v);
         
 		
@@ -126,11 +122,23 @@ public class TemaRespuesta extends Activity {
 
 	public void enviarmail(){
 		try {   
-            GMailEnvio sender = new GMailEnvio("envioappmovil@gmail.com", "Sistemas2");
+            //GMailEnvio sender = new GMailEnvio("envioappmovil@gmail.com", "Sistemas2");
             ArrayList<String> usuarios = DatabaseManager.getEmailRespuestas(Integer.valueOf(idtematexto));
+            Log.e("CargueUsuarios", "Cargue Usuarios" );
             for( String s : usuarios ){
                try{
-               sender.sendMail("Respuesta al tema " + titulotexto , "Otro usuario comento el tema que tu respondiste", "envioappmovil@gmail.com", s);   
+            	
+           		BackgroundMail bm = new BackgroundMail(context);
+				bm.setGmailUserName("envioappmovil@gmail.com");
+				bm.setGmailPassword("Sistemas1"); 
+				bm.setMailTo(s);
+				bm.setFormSubject("Respuesta al tema " + titulotexto);
+				bm.setFormBody("Otro usuario comento el tema que tu respondiste");
+				bm.setSendingMessage("Notificando usuario " + s);
+				bm.setSendingMessageSuccess("Se notifico correctamente");
+				bm.setProcessVisibility(false);
+				bm.send();
+             //  sender.sendMail("Respuesta al tema " + titulotexto , "Otro usuario comento el tema que tu respondiste", "envioappmovil@gmail.com", s);   
                Log.e("MAIL", "Se envio correctamente a " + s );
                } catch (Exception e) {   
                    Log.e("MAIL", e.getMessage(), e);   
