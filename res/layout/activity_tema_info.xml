@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/android"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -18,6 +19,7 @@
         android:layout_below="@+id/info1"
         android:text="Nuevo Tema: Para crear una consulta damos en el botón + y completamos los campos. Luego los usuarios del sistema podrán proponer respuestas a tu tema. "
         android:textSize="@dimen/info2"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <TextView
@@ -28,6 +30,7 @@
         android:layout_below="@+id/info2"
         android:text="Responder: Elegimos uno de los temas que se despliegan al inicio, completamos los datos y damos en guardar, se enviara un correo a todos los involucrados en el tema para que vean tu comentario."
         android:textSize="@dimen/info2"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <TextView
@@ -39,6 +42,7 @@
         android:layout_marginLeft="26dp"
         android:layout_marginTop="36dp"
         android:text="Ayuda:"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <TextView
@@ -49,6 +53,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="41dp"
         android:text="Integrantes:"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <TextView
@@ -58,6 +63,7 @@
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
         android:layout_marginLeft="16dp"
+        android:textColor="#FFFFFF"
         android:text="Vanessa Cáseres" />
 
     <TextView
@@ -66,6 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/integrante2"
         android:layout_below="@+id/integrante2"
+        android:textColor="#FFFFFF"
         android:text="Karina Lanata" />
 
     <TextView
@@ -74,6 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/integrante3"
         android:layout_below="@+id/integrante3"
+        android:textColor="#FFFFFF"
         android:text="Marcelo Dalmao" />
 
     <TextView
@@ -85,6 +93,7 @@
         android:layout_marginTop="18dp"
         android:text="Esta es una aplicación para poder proponer una pregunta a la comunidad de desarrolladores y obtener una respuesta a la misma."
         android:textSize="@dimen/info2"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <TextView
@@ -96,15 +105,17 @@
         android:layout_below="@+id/info3"
         android:text="Busqueda: Se prodra buscar un Tema por nombre de usuario, palabra clave o fecha."
         android:textSize="@dimen/info2"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="info2"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/textView1"
-        android:text="Ver en Formato web" />
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@+id/txtIntegrantes"
+        android:onClick="info2"
+        android:text="Formato web" />
 
 </RelativeLayout>

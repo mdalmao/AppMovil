@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/android"
     android:orientation="vertical" >
 
     <TextView
@@ -8,11 +9,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
+        android:textColor="#FFFFFF"
         android:text="Titulo" />
 
     <EditText
         android:id="@+id/tema_titulo"
         android:layout_width="match_parent"
+         android:textColor="#FFFFFF"
         android:layout_height="wrap_content"
         android:ems="10" >
 
@@ -25,12 +28,14 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"
         android:text="Usuario" />
 
     <EditText
         android:id="@+id/tema_usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+         android:textColor="#FFFFFF"
         android:ems="10" />
 
     <TextView
@@ -39,12 +44,14 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"
         android:text="Pregunta" />
 
     <EditText
         android:id="@+id/tema_pregunta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+         android:textColor="#FFFFFF"
         android:ems="10"
         android:inputType="textMultiLine"
         android:lines="5" />
@@ -54,12 +61,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
+        android:textColor="#FFFFFF"
         android:text="Email" />
 
     <EditText
         android:id="@+id/tema_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+         android:textColor="#FFFFFF"
         android:ems="10"
         android:inputType="textEmailAddress" />
 
@@ -74,21 +83,21 @@
             
             <ImageButton
             android:id="@+id/botonGuardar"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="80dp"
             android:layout_marginTop="10dp"
-            android:layout_width="47dp"
-            android:layout_height="42dp"
+            android:layout_width="60dp"
+            android:layout_height="55dp"
              android:onClick="guardar"
-            android:src="@drawable/guardar" />
+            android:src="@drawable/ic_action_save" />
             
             <ImageButton
                 android:id="@+id/botonVolver"
-                android:layout_width="38dp"
-                android:layout_height="34dp"
+                android:layout_width="60dp"
+                android:layout_height="55dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="50dp"
                  android:onClick="sendMessage"
-                android:src="@drawable/volver" />
+                android:src="@drawable/ic_action_web_site" />
 
         </TableRow>
 

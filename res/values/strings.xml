@@ -28,5 +28,10 @@
     <string name="title_activity_detalle_tema">DetalleTema</string>
     <string name="temas">Temas</string>
     <string name="title_activity_web_view">WebView</string>
+    <string name="menu_nuevo">Nuevo</string>
+     <string name="menu_buscar">Buscar</string>
+     <string name="ic_action_undo">Inicio</string>
+     <string name="menu_ayuda">Ayuda</string>
+     
 
 </resources>

@@ -1,70 +1,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="#0C9681"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/android"
+   
     android:orientation="horizontal" >
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/temas"
-        android:textSize="20sp" />
-    
-    
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-            
-             <ImageButton
-            android:id="@+id/botonnuevo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100sp"
-            android:onClick="nuevo"
-            android:contentDescription="@string/nuevo"
-            android:src="@android:drawable/stat_notify_more" />
-
-        <ImageButton
-            android:id="@+id/botoninfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/info"
-            android:onClick="info"
-            android:src="@android:drawable/ic_dialog_info" />
-
-        <ImageButton
-            android:id="@+id/botonbuscar"
-            android:contentDescription="@string/buscar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="buscar"
-            android:src="@android:drawable/ic_menu_search" />
-        
-        </TableRow>
-
-       
-       
-          
-    </TableLayout>
 
     <ListView
         android:id="@+id/listbuscar"
-        android:layout_width="299dp"
-        android:layout_height="362dp"
-        android:layout_marginLeft="-300sp"
-        android:layout_marginTop="100sp" >
+        android:layout_width="fill_parent"
+       android:background="@drawable/android"
+       android:layout_height="wrap_content" 
+        >
 
     </ListView>
     
 </LinearLayout>
-
-

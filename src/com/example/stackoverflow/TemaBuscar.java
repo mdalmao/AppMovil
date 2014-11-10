@@ -14,6 +14,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.AdapterView;
@@ -74,7 +75,7 @@ public class TemaBuscar extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.tema_buscar, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 		
@@ -210,5 +211,33 @@ public class TemaBuscar extends Activity {
         
         }
 	};
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case R.id.menu_new:
+	            Log.i("ActionBar", "Nuevo!");
+	            Intent settingsActivity = new Intent(getBaseContext(), Temanuevo.class);
+	          	startActivity(settingsActivity); 
+	            return true;
+	        case R.id.menu_buscar:
+	            Log.i("ActionBar", "buscar!");;
+	            Intent settingsActivity2 = new Intent(getBaseContext(), TemaBuscar.class);
+	          	startActivity(settingsActivity2); 
+	            return true;
+	        case R.id.menu_atras:
+	            Log.i("ActionBar", "atras!");;
+	            Intent settingsActivity4 = new Intent(getBaseContext(), MainActivity.class);
+	          	startActivity(settingsActivity4); 
+	          	 return true;
+	        case R.id.menu_ayuda:
+	            Log.i("ActionBar", "ayuda!");;
+	            Intent settingsActivity3 = new Intent(getBaseContext(), TemaInfo.class);
+	          	startActivity(settingsActivity3); 
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
 	
 }
